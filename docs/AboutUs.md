@@ -18,8 +18,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](https://github.com/sun-heqiao)]
 [[portfolio](team/sun-heqiao.md)]
 
-* Role: Developer
-* Responsibilities: Developer
+* Role: Project Advisor
 
 ### Jane Doe
 
