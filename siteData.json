@@ -11,7 +11,7 @@
         "jasher-lim": "Jasher Lim",
         "johnny-doe": "Johnny Doe",
         "jean-doe": "Jean Doe",
-        "james-doe": "James Doe"
+        "zhou-jingbin": "ZHOU JINGBIN"
       },
       "headingKeywords": {}
     },
@@ -155,6 +155,11 @@
     },
     {
       "src": "team/sun-heqiao.md",
+      "headings": {},
+      "headingKeywords": {}
+    },
+    {
+      "src": "team/zhou_jingbin.md",
       "headings": {},
       "headingKeywords": {}
     }
