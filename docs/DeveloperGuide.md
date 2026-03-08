@@ -505,6 +505,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
+**AB3 (AddressBook Level-3)**  
+The baseline codebase from which GymContactsPro is developed. Refers to the SE-EDU AddressBook-Level3 project.
+
 **Command**  
 A text instruction entered by the Gym Manager to perform an operation in GymContactsPro.
 
@@ -519,6 +522,9 @@ A situation where a member being added or edited has the same identifying fields
 
 **Error Message**  
 A system-generated message displayed when the requested operation cannot be completed.
+
+**Front-Desk Staff**  
+Personnel working at the gym reception who manage member registrations, check-ins, and membership records using GymContactsPro.
 
 **Gym Manager**  
 The primary user of GymContactsPro who manages gym member records and memberships.
@@ -537,6 +543,9 @@ Widely used operating systems such as Windows, macOS and Linux that GymContactsP
 
 **Member**  
 An individual registered in GymContactsPro with personal and membership information.
+
+**Member Lookup**  
+The process of searching for and retrieving a member’s record from the system using attributes such as name, phone number, or membership ID.
 
 **Member Record**  
 A stored set of information about a gym member, including personal details and membership information.
