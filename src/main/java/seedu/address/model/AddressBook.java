@@ -31,6 +31,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     //        nextMembershipId = MembershipId.MIN_ID;
     //    }
 
+    /**
+     * Constructs an empty {@code AddressBook}.
+     */
     public AddressBook() {
         persons = new UniquePersonList();
         nextMembershipId = MembershipId.MIN_ID;
