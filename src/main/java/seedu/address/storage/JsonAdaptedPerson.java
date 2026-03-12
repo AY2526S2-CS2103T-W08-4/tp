@@ -27,7 +27,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
-    private final Integer membershipId; 
+    private final Integer membershipId;
 
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
@@ -41,7 +41,7 @@ class JsonAdaptedPerson {
         if (tags != null) {
             this.tags.addAll(tags);
         }
-        this.membershipId = membershipId; 
+        this.membershipId = membershipId;
     }
 
     public JsonAdaptedPerson(Person source) {
