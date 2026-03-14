@@ -31,7 +31,10 @@ public class Address {
         requireNonNull(address);
         checkArgument(isValidAddress(address), MESSAGE_CONSTRAINTS);
         value = address;
-        normalizedValue = address.toLowerCase(Locale.ROOT);
+        // Normalize: lowercase, remove commas, and compress whitespace
+        normalizedValue = address.toLowerCase(Locale.ROOT)
+                .replaceAll(",", "")
+                .replaceAll("\\s+", " ");
     }
 
     /**
