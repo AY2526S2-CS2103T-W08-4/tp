@@ -50,7 +50,7 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        // Parser creates person with default membership ID (MIN_ID) and default expiry date, so expected person should too
+
         Person expectedPerson = new PersonBuilder(BOB).withTags(VALID_TAG_FRIEND)
                 .withMembershipId(seedu.address.model.person.MembershipId.MIN_ID)
                 .withMembershipExpiryDate("2026-12-31").build();
