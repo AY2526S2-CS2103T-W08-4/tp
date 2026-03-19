@@ -84,10 +84,6 @@ public class PersonTest {
         // different address -> returns false
         editedAlice = new PersonBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
         assertFalse(ALICE.equals(editedAlice));
-
-        // different tags -> returns false
-        editedAlice = new PersonBuilder(ALICE).build();
-        assertFalse(ALICE.equals(editedAlice));
     }
 
     @Test
