@@ -3,7 +3,7 @@
 }
 
 #copyButton {
-    -fx-background-color: dimgray;
+    -fx-background-color: #b1b0b0;
 }
 
 #copyButton:hover {
