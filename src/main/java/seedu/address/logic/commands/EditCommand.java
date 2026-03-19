@@ -29,7 +29,6 @@ import seedu.address.model.person.MembershipId;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -103,13 +102,12 @@ public class EditCommand extends Command {
         Phone updatedPhone = editPersonDescriptor.getPhone().orElse(personToEdit.getPhone());
         Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
         Address updatedAddress = editPersonDescriptor.getAddress().orElse(personToEdit.getAddress());
-        Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         // Membership ID cannot be edited - preserve original
         MembershipId membershipId = personToEdit.getMembershipId();
         MembershipExpiryDate updatedMembershipExpiryDate = editPersonDescriptor.getMembershipExpiryDate()
                 .orElse(personToEdit.getMembershipExpiryDate());
 
-        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, membershipId,
+        return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, membershipId,
                 updatedMembershipExpiryDate);
     }
 
@@ -146,7 +144,6 @@ public class EditCommand extends Command {
         private Phone phone;
         private Email email;
         private Address address;
-        private Set<Tag> tags;
         private MembershipExpiryDate membershipExpiryDate;
 
         public EditPersonDescriptor() {}
@@ -161,14 +158,13 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setAddress(toCopy.address);
             setMembershipExpiryDate(toCopy.membershipExpiryDate);
-            setTags(toCopy.tags);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, membershipExpiryDate, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, membershipExpiryDate);
         }
 
         public void setName(Name name) {
@@ -211,23 +207,6 @@ public class EditCommand extends Command {
             return Optional.ofNullable(membershipExpiryDate);
         }
 
-        /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
-         * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
-         * if modification is attempted.
-         * Returns {@code Optional#empty()} if {@code tags} is null.
-         */
-        public Optional<Set<Tag>> getTags() {
-            return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
-        }
-
         @Override
         public boolean equals(Object other) {
             if (other == this) {
@@ -244,8 +223,7 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(address, otherEditPersonDescriptor.address)
-                    && Objects.equals(membershipExpiryDate, otherEditPersonDescriptor.membershipExpiryDate)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(membershipExpiryDate, otherEditPersonDescriptor.membershipExpiryDate);
         }
 
         @Override
@@ -256,7 +234,6 @@ public class EditCommand extends Command {
                     .add("email", email)
                     .add("address", address)
                     .add("membershipExpiryDate", membershipExpiryDate)
-                    .add("tags", tags)
                     .toString();
         }
     }
