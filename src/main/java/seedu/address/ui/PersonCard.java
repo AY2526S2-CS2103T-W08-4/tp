@@ -1,5 +1,6 @@
 package seedu.address.ui;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 
 import javafx.fxml.FXML;
@@ -44,6 +45,8 @@ public class PersonCard extends UiPart<Region> {
     private Label membershipId;
     @FXML
     private Label membershipExpiryDate;
+    @FXML
+    private Label membershipStatus;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -61,5 +64,18 @@ public class PersonCard extends UiPart<Region> {
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
         membershipId.setText("Membership ID: " + person.getMembershipId().value);
         membershipExpiryDate.setText("Membership Expiry: " + person.getMembershipExpiryDate().toString());
+
+        LocalDate expiryDate = person.getMembershipExpiryDate().value;
+        LocalDate today = LocalDate.now();
+        boolean isActive = expiryDate != null && !expiryDate.isBefore(today);
+        membershipStatus.setText(isActive ? "Active" : "Expired");
+        String color = isActive ? "#4CAF50" : "#F44336";
+        membershipStatus.setStyle(
+                "-fx-background-color: " + color + ";" +
+                        "-fx-text-fill: white;" +
+                        "-fx-padding: 2 12 2 12;" +
+                        "-fx-background-radius: 8;" +
+                        "-fx-font-weight: bold;"
+        );
     }
 }
