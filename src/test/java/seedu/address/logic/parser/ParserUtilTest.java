@@ -16,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.MembershipExpiryDate;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
@@ -26,6 +27,7 @@ public class ParserUtilTest {
     private static final String INVALID_ADDRESS = " ";
     private static final String INVALID_EMAIL = "example.com";
     private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_MEMBERSHIP_EXPIRY_DATE = "2026-02-31";
 
     private static final String VALID_NAME = "Rachel Walker";
     private static final String VALID_PHONE = "12345678";
@@ -33,6 +35,7 @@ public class ParserUtilTest {
     private static final String VALID_EMAIL = "rachel@example.com";
     private static final String VALID_TAG_1 = "friend";
     private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_MEMBERSHIP_EXPIRY_DATE = "2026-12-31";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -147,6 +150,32 @@ public class ParserUtilTest {
         Email expectedEmail = new Email(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
     }
+
+    @Test
+    public void parseMembershipExpiryDate_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseMembershipExpiryDate((String) null));
+    }
+
+    @Test
+    public void parseMembershipExpiryDate_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseMembershipExpiryDate(INVALID_MEMBERSHIP_EXPIRY_DATE));
+    }
+
+    @Test
+    public void parseMembershipExpiryDate_validValueWithoutWhitespace_returnsMembershipExpiryDate() throws Exception {
+        MembershipExpiryDate expectedMembershipExpiryDate = new MembershipExpiryDate(VALID_MEMBERSHIP_EXPIRY_DATE);
+        assertEquals(expectedMembershipExpiryDate, ParserUtil.parseMembershipExpiryDate(VALID_MEMBERSHIP_EXPIRY_DATE));
+    }
+
+    @Test
+    public void parseMembershipExpiryDate_validValueWithWhitespace_returnsTrimmedMembershipExpiryDate()
+            throws Exception {
+        String membershipExpiryDateWithWhitespace = WHITESPACE + VALID_MEMBERSHIP_EXPIRY_DATE + WHITESPACE;
+        MembershipExpiryDate expectedMembershipExpiryDate = new MembershipExpiryDate(VALID_MEMBERSHIP_EXPIRY_DATE);
+        assertEquals(expectedMembershipExpiryDate, ParserUtil
+                .parseMembershipExpiryDate(membershipExpiryDateWithWhitespace));
+    }
+
 
     @Test
     public void parseTag_null_throwsNullPointerException() {
