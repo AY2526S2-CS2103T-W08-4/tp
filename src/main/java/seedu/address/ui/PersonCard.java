@@ -71,11 +71,11 @@ public class PersonCard extends UiPart<Region> {
         membershipStatus.setText(isActive ? "Active" : "Expired");
         String color = isActive ? "#4CAF50" : "#F44336";
         membershipStatus.setStyle(
-                "-fx-background-color: " + color + ";" +
-                        "-fx-text-fill: white;" +
-                        "-fx-padding: 2 12 2 12;" +
-                        "-fx-background-radius: 8;" +
-                        "-fx-font-weight: bold;"
+                "-fx-background-color: " + color + ";"
+                + "-fx-text-fill: white;"
+                + "-fx-padding: 2 12 2 12;"
+                + "-fx-background-radius: 8;"
+                + "-fx-font-weight: bold;"
         );
     }
 }
