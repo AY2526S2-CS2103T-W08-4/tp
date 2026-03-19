@@ -44,7 +44,7 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                 PREFIX_MEMBERSHIP_EXPIRY_DATE);
 
         EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
@@ -61,7 +61,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_ADDRESS).isPresent()) {
             editPersonDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
-        if (argMultimap.getValue(PREFIX_MEMBERSHIP_EXPIRY_DATE)).isPresent()) {
+        if (argMultimap.getValue(PREFIX_MEMBERSHIP_EXPIRY_DATE).isPresent()) {
             editPersonDescriptor.setMembershipExpiryDate(
                     ParserUtil.parseMembershipExpiryDate(argMultimap.getValue(PREFIX_MEMBERSHIP_EXPIRY_DATE).get()));
         }
