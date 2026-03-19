@@ -17,7 +17,6 @@ import seedu.address.model.person.MembershipId;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
 
 class JsonAdaptedPerson {
 
@@ -53,18 +52,11 @@ class JsonAdaptedPerson {
         phone = source.getPhone().value;
         email = source.getEmail().value;
         address = source.getAddress().value;
-        tags.addAll(source.getTags().stream()
-            .map(JsonAdaptedTag::new)
-            .collect(Collectors.toList()));
         membershipId = source.getMembershipId().value;
         membershipExpiryDate = source.getMembershipExpiryDate().toString(); // ADD THIS
     }
 
     public Person toModelType() throws IllegalValueException {
-        final List<Tag> personTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tags) {
-            personTags.add(tag.toModelType());
-        }
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -98,8 +90,6 @@ class JsonAdaptedPerson {
         }
         final Address modelAddress = new Address(address);
 
-        final Set<Tag> modelTags = new HashSet<>(personTags);
-
 
         if (membershipId == null) {
             throw new IllegalValueException(String.format(
@@ -121,6 +111,6 @@ class JsonAdaptedPerson {
         final MembershipExpiryDate modelMembershipExpiryDate = new MembershipExpiryDate(membershipExpiryDate);
 
         return new Person(modelName, modelPhone, modelEmail, modelAddress,
-            modelTags, modelMembershipId, modelMembershipExpiryDate);
+                modelMembershipId, modelMembershipExpiryDate);
     }
 }
