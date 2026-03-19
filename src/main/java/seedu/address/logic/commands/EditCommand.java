@@ -106,11 +106,11 @@ public class EditCommand extends Command {
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
         // Membership ID cannot be edited - preserve original
         MembershipId membershipId = personToEdit.getMembershipId();
-        MembershipExpiryDate upDatedMembershipExpiryDate = editPersonDescriptor.getMembershipExpiryDate()
+        MembershipExpiryDate updatedMembershipExpiryDate = editPersonDescriptor.getMembershipExpiryDate()
                 .orElse(personToEdit.getMembershipExpiryDate());
 
         return new Person(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags, membershipId,
-                upDatedMembershipExpiryDate);
+                updatedMembershipExpiryDate);
     }
 
     @Override
