@@ -71,7 +71,7 @@ public class AddCommand extends Command {
         // Generate new membership ID and create person with it
         int newMembershipId = model.getNextMembershipId();
         Person personWithId = new Person(toAdd.getName(), toAdd.getPhone(), toAdd.getEmail(),
-                toAdd.getAddress(), toAdd.getTags(), new MembershipId(newMembershipId),
+                toAdd.getAddress(), new MembershipId(newMembershipId),
                 toAdd.getMembershipExpiryDate());
 
         model.addPerson(personWithId);
