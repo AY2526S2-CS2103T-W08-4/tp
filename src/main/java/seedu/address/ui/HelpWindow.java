@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
 
@@ -38,7 +39,8 @@ public class HelpWindow extends UiPart<Stage> {
 
                     + "help\n"
                     + "Format: help\n"
-                    + "- Shows the help window and User Guide link.\n\n"
+                    + "- Shows the help window and User Guide link.\n"
+                    + "- Press esc to close this help window.\n\n"
 
                     + "find\n"
                     + "Format: find [id/|n/|p/|e/|a/|m/] [VALUE]\n"
@@ -85,6 +87,13 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        helpMessage.setWrapText(true);
+
+        getRoot().getScene().setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ESCAPE) {
+                hide();
+            }
+        });
     }
 
     /**
