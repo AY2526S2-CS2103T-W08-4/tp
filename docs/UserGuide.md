@@ -83,7 +83,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS m/EXPIRY_DATE`
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01, 138601 m/2026-12-11`
-![Add person](images/AddMessage)
+![Add person](images/AddPersonImages/add1.png) ![Add person](images/AddPersonImages/add2.png)
 
 ### Listing all persons : `list`
 
