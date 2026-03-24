@@ -171,11 +171,11 @@ Format: `delete id/MEMBERSHIP_ID`
 
   Example input:
 * `delete id/1` <br>
-  ![result for 'delete id/1000']()
+  ![result for 'delete id/1000'](images/delete1000)
 
 Example output:
-* Returns `Bernice Yu` <br>
-  ![result for 'delete id/1000']()
+* Returns `Deleted Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Membership ID: 1000; Membership Expiry Date: 2026-12-31` <br>
+  ![result for 'delete id/1000'](images/delete1000result.png)
 
 
 ### Clearing all entries : `clear`
