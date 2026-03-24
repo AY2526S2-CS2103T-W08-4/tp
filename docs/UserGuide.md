@@ -170,7 +170,7 @@ Format: `delete id/MEMBERSHIP_ID`
 * The MEMBERSHIP_ID refers to the Membership ID number shown in the displayed person list.
 
   Example input:
-* `delete id/1` <br>
+* `delete id/1000` <br>
   ![result for 'delete id/1000'](images/delete1000)
 
 Example output:
