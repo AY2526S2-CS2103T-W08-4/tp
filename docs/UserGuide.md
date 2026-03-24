@@ -167,8 +167,15 @@ Deletes the specified person from the address book.
 Format: `delete id/MEMBERSHIP_ID`
 
 * Deletes the person with the specified `MEMBERSHIP_ID`.
-* The index refers to the Membership ID number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* The MEMBERSHIP_ID refers to the Membership ID number shown in the displayed person list.
+
+  Example input:
+* `delete id/1` <br>
+  ![result for 'delete id/1000']()
+
+Example output:
+* Returns `Bernice Yu` <br>
+  ![result for 'delete id/1000']()
 
 
 ### Clearing all entries : `clear`
