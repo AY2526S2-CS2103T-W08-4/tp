@@ -23,7 +23,7 @@ public class FindCommand extends Command {
             + "Prefixes:\n"
             + "  id/ID\n"
             + "  n/NAME\n"
-            + "  p/PHONE\n"
+            + "  p/PHONE_NUMBER\n"
             + "  e/EMAIL\n"
             + "  a/ADDRESS(Postal Code)\n"
             + "  m/EXPIRY_DATE\n"
