@@ -8,19 +8,19 @@
 
 AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a  Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
 
-[Quick start](#quick-start)
+- [Quick start](#quick-start)
 - [Features](#features)
-    - [Adding a person: `add`](#adding-a-person-add)
-    - [Listing all persons: `list`](#listing-all-persons-list)
-    - [Deleting a person: `delete`](#deleting-a-person-delete)
-    - [Editing a person: `edit`](#editing-a-person-edit)
-    - [Locating persons: `find`](#locating-persons-find)
-    - [Clearing all entries: `clear`](#clearing-all-entries-clear)
-    - [Viewing help: `help`](#viewing-help-help)
-    - [Exiting the program: `exit`](#exiting-the-program-exit)
-    - [Saving the data](#saving-the-data)
-    - [Editing the data file](#editing-the-data-file)
-    - [Archiving data files: `coming in v2.0`](#archiving-data-files-coming-in-v20)
+  - [Adding a person: `add`](#adding-a-person-add)
+  - [Listing all persons: `list`](#listing-all-persons-list)
+  - [Deleting a person: `delete`](#deleting-a-person-delete)
+  - [Editing a person: `edit`](#editing-a-person-edit)
+  - [Locating person(s): `find`](#locating-person-s-find)
+  - [Clearing all entries: `clear`](#clearing-all-entries-clear)
+  - [Viewing help: `help`](#viewing-help-help)
+  - [Exiting the program: `exit`](#exiting-the-program-exit)
+  - [Saving the data](#saving-the-data)
+  - [Editing the data file](#editing-the-data-file)
+  - [Archiving data files: `coming in v2.0`](#archiving-data-files-coming-in-v20)
 - [FAQ](#faq)
 - [Known issues](#known-issues)
 - [Command summary](#command-summary)
@@ -132,33 +132,36 @@ Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons : `find`
+### Locating person(s) : `find`
 
-Finds persons whose attributes contain any of the given keywords.
+Finds person(s) whose attributes contain any of the given keywords and, returns them as a list.
 
 Format: `find PREFIX/KEYWORD [MORE_KEYWORDS]`
 
 * Only 1 `PREFIX` is allowed in the command
-    * PREFIX `id/` for finding by Membership ID.
-    * PREFIX `n/` for finding by Name.
-    * PREFIX `p/` for finding by Phone number.
-    * PREFIX `e/` for finding by Email.
-    * PREFIX `a/` for finding by Address(Postal Code).
-    * PREFIX `m/` for finding by Membership Expiry Date.
+    * Prefix `id/` finds by Membership ID.
+    * Prefix `n/` finds by Name.
+    * Prefix `p/` finds by Phone number.
+    * Prefix `e/` finds by Email.
+    * Prefix `a/` finds by Address(Postal Code).
+    * Prefix `m/` finds by Membership Expiry Date.
 * At least 1 `KEYWORD` must be provided.
-    * The keyword is case-insensitive. e.g `hans` will match `Hans`
-    * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
+  * Persons matching at least one keyword will be returned (i.e. `OR` search).<br>
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+  * The order of the keywords does not matter.<br>
+  e.g. `Hans Bo` will match `Bo Hans`
+* Only full keywords will be matched<br>
+e.g. `Han` will not match `Hans`
+* Keywords are case-insensitive.<br>
+e.g `hans` will match `Hans`
 
 Example input:
 * `find n/bernice` <br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  ![command for 'find n/bernice'](images/findBerniceCommand.png)
 
 Example output:
 * Returns `Bernice Yu` <br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+  ![result for 'find n/bernice'](images/findBerniceResult.png)
 
 ### Deleting a person : `delete`
 
