@@ -167,15 +167,19 @@ Example output:
 
 Deletes the specified person from the address book.
 
-Format: `delete INDEX`
+Format: `delete id/MEMBERSHIP_ID`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+* Deletes the person with the specified `MEMBERSHIP_ID`.
+* The MEMBERSHIP_ID refers to the Membership ID number shown in the displayed person list.
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+  Example input:
+* `delete id/1000` <br>
+  ![result for 'delete id/1000'](images/delete1000.png)
+
+Example output:
+* Returns `Deleted Person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40; Membership ID: 1000; Membership Expiry Date: 2026-12-31` <br>
+  ![result for 'delete id/1000'](images/delete1000result.png)
+
 
 ### Clearing all entries : `clear`
 
@@ -228,10 +232,11 @@ _Details coming soon ..._
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear**  | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Add**    | `add n/NAME p/PHONE e/EMAIL a/ADDRESS m/EXPIRY_DATE` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 m/2026-12-31`
 **List**   | `list`
+**Delete** | `delete id/MEMBERSHIP_ID`<br> e.g., `delete 3`
+**Edit**   | `edit id/MEMBERSHIP_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [m/EXPIRY_DATE]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Find**   | `find PREFIX/KEYWORD [MORE_KEYWORDS]`<br> e.g., `find n/James Jake`
 **Help**   | `help`
+**Clear**  | `clear`
+**Exit**   | `exit`
