@@ -29,12 +29,18 @@ public class EditCommandParser implements Parser<EditCommand> {
                 ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                         PREFIX_MEMBERSHIP_EXPIRY_DATE);
 
-        MembershipId membershipId;
+        int membershipIdValue;
         try {
-            membershipId = ParserUtil.parseMembershipId(argMultimap.getPreamble());
-        } catch (ParseException pe) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
+            membershipIdValue = Integer.parseInt(argMultimap.getPreamble().trim());
+        } catch (NumberFormatException e) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE));
         }
+
+        if (!MembershipId.isValidMembershipId(membershipIdValue)) {
+            throw new ParseException(MembershipId.MESSAGE_CONSTRAINTS);
+        }
+
+        MembershipId membershipId = new MembershipId(membershipIdValue);
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
                 PREFIX_MEMBERSHIP_EXPIRY_DATE);
