@@ -110,6 +110,7 @@
         "gymcontactspro-user-guide": "GymContactsPro User Guide",
         "quick-start": "Quick start",
         "features": "Features",
+        "notes-about-the-command-format": "Notes about the command format:",
         "viewing-help-help": "Viewing help : help",
         "adding-a-person-add": "Adding a person : add",
         "listing-all-persons-list": "Listing all persons : list",
@@ -120,7 +121,6 @@
         "exiting-the-program-exit": "Exiting the program : exit",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
-        "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
         "faq": "FAQ",
         "known-issues": "Known issues",
         "command-summary": "Command summary"
