@@ -10,7 +10,7 @@ import seedu.address.commons.util.ToStringBuilder;
  */
 public class PostalCodeContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> keywords;
-    
+
     public PostalCodeContainsKeywordsPredicate(List<String> keywords) {
         this.keywords = keywords;
     }
@@ -23,7 +23,7 @@ public class PostalCodeContainsKeywordsPredicate implements Predicate<Person> {
         return keywords.stream()
                 .anyMatch(keyword -> postalCode.equals(keyword));
     }
-    
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -33,11 +33,11 @@ public class PostalCodeContainsKeywordsPredicate implements Predicate<Person> {
         if (!(other instanceof PostalCodeContainsKeywordsPredicate)) {
             return false;
         }
-        
+
         PostalCodeContainsKeywordsPredicate otherPredicate = (PostalCodeContainsKeywordsPredicate) other;
         return keywords.equals(otherPredicate.keywords);
     }
-    
+
     @Override
     public String toString() {
         return new ToStringBuilder(this).add("keywords", keywords).toString();
