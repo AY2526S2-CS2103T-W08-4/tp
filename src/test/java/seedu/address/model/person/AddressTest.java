@@ -31,7 +31,7 @@ public class AddressTest {
         assertFalse(Address.isValidAddress("Blk 123 1234567")); // 7 digits
         assertFalse(Address.isValidAddress("Blk 123 123456 A")); // digits not at the end
         assertFalse(Address.isValidAddress("-")); // one character (no postal code)
-        
+
         // valid addresses
         assertTrue(Address.isValidAddress("123456")); // exactly 6 digits only
         assertTrue(Address.isValidAddress("Blk 456, Den Road, #01-355 123456"));
