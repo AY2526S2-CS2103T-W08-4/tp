@@ -74,7 +74,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         case "p/":
             return new FindCommand(new PhoneContainsKeywordsPredicate(keywordList));
         case "e/":
-             return new FindCommand(new EmailContainsKeywordsPredicate(keywordList));
+            return new FindCommand(new EmailContainsKeywordsPredicate(keywordList));
         case "a/":
             return new FindCommand(new PostalCodeContainsKeywordsPredicate(keywordList));
         case "id/":
