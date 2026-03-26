@@ -30,7 +30,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         // Check that exactly one prefix is present
         Prefix usedPrefix = null;
         for (Prefix prefix : allPrefixes) {
-            if (argMultimap.getValue(prefix).isPresent() && !argMultimap.getValue(prefix).get().trim().isEmpty()) {
+            if (argMultimap.getValue(prefix).isPresent()) {
                 // More than one prefix detected
                 if (usedPrefix != null) {
                     throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
