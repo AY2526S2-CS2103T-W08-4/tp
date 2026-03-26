@@ -66,7 +66,7 @@ public class FindCommandParser implements Parser<FindCommand> {
         // case "m/":
         //     return new FindCommand(new ExpiryDateContainsKeywordsPredicate(keywordList));
         default:
-            throw new ParseException("Find by this prefix is not yet supported. Only name is supported.");
+            throw new ParseException("Find by this prefix is not yet supported.");
         }
     }
 
