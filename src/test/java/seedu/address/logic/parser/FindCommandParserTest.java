@@ -103,7 +103,8 @@ public class FindCommandParserTest {
         assertParseSuccess(parser, "find e/alice@example.com", expectedFindCommandSingle);
 
         FindCommand expectedFindCommandMultiple =
-                new FindCommand(new EmailContainsKeywordsPredicate(Arrays.asList("alice@example.com", "bob@example.com")));
+                new FindCommand(new EmailContainsKeywordsPredicate(Arrays
+                        .asList("alice@example.com", "bob@example.com")));
         assertParseSuccess(parser, "find e/alice@example.com bob@example.com", expectedFindCommandMultiple);
     }
 
