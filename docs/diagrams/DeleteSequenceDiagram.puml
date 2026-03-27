@@ -27,7 +27,7 @@ activate DeleteCommandParser
 DeleteCommandParser --> AddressBookParser
 deactivate DeleteCommandParser
 
-AddressBookParser -> DeleteCommandParser : parse("1000")
+AddressBookParser -> DeleteCommandParser : parse("id/1000")
 activate DeleteCommandParser
 
 create DeleteCommand
