@@ -45,17 +45,8 @@ public class FindCommandParser implements Parser<FindCommand> {
         // Use utility method to check for duplicate identical prefixes
         argMultimap.verifyNoDuplicatePrefixesFor(allPrefixes);
 
-        // Check that exactly one prefix is present
-        Prefix usedPrefix = null;
-        for (Prefix prefix : allPrefixes) {
-            if (argMultimap.getValue(prefix).isPresent()) {
-                // More than one prefix detected
-                if (usedPrefix != null) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
-                }
-                usedPrefix = prefix;
-            }
-        }
+        // Use utility method to check that exactly one prefix is present
+        Prefix usedPrefix = argMultimap.verifyExactlyOnePrefixPresentFor(FindCommand.MESSAGE_USAGE, allPrefixes);
 
         // No prefix detected
         if (usedPrefix == null) {
