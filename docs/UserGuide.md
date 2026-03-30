@@ -100,12 +100,15 @@ Adds a new gym member to the list of registered gym members.
 **Format:** `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS m/EXPIRY_DATE`
 
 <box type="info" seamless>
+
 **Note:**
+* Pending edit
 
 </box>
 <box type="tip" seamless>
 
-**Tip:** Attributes following the `add` command can be provided in any order
+**Tip:** 
+* Attributes following the `add` command can be provided in any order
 </box>
 
 **Example input:**
@@ -125,13 +128,17 @@ Displays the list of all registered gym members.
 **Format:** `list`
 
 <box type="info" seamless>
+
 **Note:**
+* Pending edit
 
 </box>
 
 <box type="tip" seamless>
 
 **Tip:**
+* Pending edit
+
 </box>
 
 **Example input:**
@@ -151,8 +158,8 @@ Deletes the specified member(s) from the list of registered gym members.
 **Format:** `delete id/MEMBERSHIP_ID [MORE_MEMBERSHIP_IDS]`
 
 <box type="info" seamless>
-**Note:**
 
+**Note:**
 * Deletes the person with the specified `MEMBERSHIP_ID`.
 * The MEMBERSHIP_ID refers to the Membership ID number shown in the displayed person list.
 
@@ -161,6 +168,8 @@ Deletes the specified member(s) from the list of registered gym members.
 <box type="tip" seamless>
 
 **Tip:**
+* Pending edit
+
 </box>
 
 **Example input:**
@@ -192,6 +201,8 @@ Edits an existing member among the registered gym members.
 <box type="tip" seamless>
 
 **Tip:**
+* Pending edit
+
 </box>
 
 **Example input:**
@@ -222,16 +233,17 @@ Finds member(s) matching any of the given keywords.
     * Prefix `m/` finds by Membership Expiry Date.
 * At least 1 `KEYWORD` must be provided.
   * Only full keywords will be matched<br>
-  e.g. `Chlo` will not match `Chloe`
+  e.g. `Ber` will not match `Bernice`
   * Keywords are case-insensitive.<br>
-  e.g `chloe` will match `CHLOE`
+  e.g `bernice` will match `BERNICE`
 </box>
 
 <box type="tip" seamless>
 
-**Tip:** Finding by name doesn't require full names.
-* Any keyword matching part of a member’s first or last name will return that member.<br>
-  e.g. `Max` will match and find `Max Lim`
+**Tip:** 
+* Finding by name doesn't require full names.
+  * Any keyword matching part of a member’s first or last name will return that member.<br>
+    e.g. `Bernice` will match and find `Bernice Yu`
 
 </box>
 
@@ -270,8 +282,9 @@ Activate or De-activate a sorting order.
 
 <box type="tip" seamless>
 
-**Tip:** Sorting order, regardless of whether it is `asc` or `desc` will be "turned on" and
-applied on the displayed list across all commands unless "turned off" by `sort none`.
+**Tip:** 
+* Sorting order, regardless of whether it is `asc` or `desc`, will be "turned on" and
+applied on displayed lists across all commands unless "turned off" by `sort none`.
 
 </box>
 
@@ -303,6 +316,7 @@ Delete all registered gym members after confirmation.
 <box type="tip" seamless>
 
 **Tip:**
+* Pending edit
 
 </box>
 
@@ -313,7 +327,7 @@ Delete all registered gym members after confirmation.
 **Example output:**
 * A warning page pops up to ask for confirmation.<br><br>
 ![result for 'clear'](images/clearConfirmation.png)<br><br>
-* After confirmation, all data will be deleted, together with a `All data cleared!` success message.<br><br>
+* After confirmation, all data will be deleted, together with a `All data has been deleted successfully` success message.<br><br>
 ![result for 'successfully delete'](images/clearSuccess.png)
 
 
@@ -328,11 +342,15 @@ Shows a help message.
 <box type="info" seamless>
 
 **Note:**
+* Pending edit
+
 </box>
 
 <box type="tip" seamless>
 
 **Tip:**
+* Pending edit
+
 </box>
 
 **Example input:**
@@ -354,11 +372,15 @@ Exits the app.
 <box type="info" seamless>
 
 **Note:**
+* Pending edit
+
 </box>
 
 <box type="tip" seamless>
 
 **Tip:**
+* Pending edit
+
 </box>
 
 **Example input:**
@@ -409,12 +431,12 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-**Add**    | `add n/NAME p/PHONE e/EMAIL a/ADDRESS m/EXPIRY_DATE`<br> e.g., `add n/James Ho p/92375927 e/jamesho@example.com a/123, Clementi Rd, 665123 m/2026-12-31`
+**Add**    | `add n/NAME p/PHONE e/EMAIL a/ADDRESS m/EXPIRY_DATE`<br> e.g., `add n/James Ho p/92375927 e/jamesho@example.com a/Blk 123, Clementi Rd, 665123 m/2026-12-31`
 **List**   | `list`
 **Delete** | `delete id/MEMBERSHIP_ID`<br> e.g., `delete id/1021`
 **Edit**   | `edit id/MEMBERSHIP_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [m/EXPIRY_DATE]`<br> e.g.,`edit 1016 n/James Lee e/jameslee@example.com`
 **Find**   | `find PREFIX/KEYWORD [MORE_KEYWORDS]`<br> e.g., `find n/James Max`
-**Sort**   | `sort PREFIX/ORDER `<br> e.g., `find n/James Jake`<br> **OR** <br> e.g., `sort none`  
+**Sort**   | `sort PREFIX/ORDER `<br> e.g., `find n/James Jake`<br> OR <br> e.g., `sort none`  
 **Help**   | `help`
 **Clear**  | `clear`
 **Exit**   | `exit`
