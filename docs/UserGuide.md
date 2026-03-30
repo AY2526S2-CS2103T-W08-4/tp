@@ -271,7 +271,7 @@ Activate or De-activate a sorting order.
 <box type="tip" seamless>
 
 **Tip:** Sorting order, regardless of whether it is `asc` or `desc` will be "turned on" and
-applied across commands unless "turned off" by `sort none`.
+applied on the displayed list across all commands unless "turned off" by `sort none`.
 
 </box>
 
@@ -280,14 +280,14 @@ applied across commands unless "turned off" by `sort none`.
   ![command for 'sort n/desc'](images/sortNameDescCommand.png)
 
 **Example output:**
-* sorted `NAME` of members in `desc` order.<br><br>
+* Sorted `NAME` of members in `desc` order.<br><br>
   ![result for 'sort n/desc'](images/sortNameDescResult.png)
 
 ---
 
 ### Clearing All Data : `clear`
 
-Delete all members from storage after confirmation.
+Delete all registered gym members after confirmation.
 
 **Format:** `clear`
 
@@ -302,47 +302,79 @@ Delete all members from storage after confirmation.
 
 <box type="tip" seamless>
 
-</box>
+**Tip:**
 
-* A warning page will pop up.
-* The user is asked to confirm his/her command.
-* “Y” means all the data will be deleted, “N” means clear command will be cancelled. Meanwhile, clicking the corresponding buttons has the same function.
-* After confirmation, the pop up window will give feedback on his/her decision and close soon after.
+</box>
 
 **Example input:**
 * `clear`<br><br>
-  ![result for 'clear'](images/clearInput.png)
+![command for 'clear'](images/clearCommand.png)
 
 **Example output:**
-* If all the data has been successfully deleted, this window will display a message to inform you.\
-  ![result for 'successfully delete'](images/successfullyDelete.png)
-* If you cancel the clear command, this window will also notify you.
-  ![result for 'cancel clear'](images/cancelDelete.png)
-* Meanwhile, the product also shows information of clear results.
-  ![result for 'success inf showed on app'](images/successInf.png)
-  ![result for 'cancel inf showed on app'](images/cancelInf.png)
+* A warning page pops up to ask for confirmation.<br><br>
+![result for 'clear'](images/clearConfirmation.png)<br><br>
+* After confirmation, all data will be deleted, together with a `All data cleared!` success message.<br><br>
+![result for 'successfully delete'](images/clearSuccess.png)
+
 
 ---
 
 ### Getting Help : `help`
 
-Shows a message with a URL to the User Guide, together with a summary list of executable commands.
-
-![help message](images/helpMessage.png)
+Shows a help message.
 
 **Format:** `help`
+
+<box type="info" seamless>
+
+**Note:**
+</box>
+
+<box type="tip" seamless>
+
+**Tip:**
+</box>
+
+**Example input:**
+* `help`<br><br>
+![command for 'help'](images/helpCommand.png)
+
+**Example output:**
+* A help window pops up with the User Guide URL and, a summary of executable commands.<br><br>
+![result for 'help'](images/helpResult.png)
 
 ---
 
 ### Exiting the App : `exit`
 
-Exits the program.
+Exits the app.
 
 **Format:** `exit`
+
+<box type="info" seamless>
+
+**Note:**
+</box>
+
+<box type="tip" seamless>
+
+**Tip:**
+</box>
+
+**Example input:**
+* `exit`<br><br>
+![command for 'exit'](images/exitCommand.png)
+
+**Example output:**
+* App window gradually disappears from view and the application exits.
+
+---
 
 ### Saving Data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+---
 
 ### Editing the Data File
 
@@ -364,16 +396,12 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
 
-<div style="page-break-after: always;"></div>
-
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known Issues
 
 1. **When using multiple screens**, if you move the application to a secondary screen, and later switch to using only the primary screen, the GUI will open off-screen. The remedy is to delete the `preferences.json` file created by the application before running the application again.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
-
-<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
 
