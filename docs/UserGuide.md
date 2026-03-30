@@ -204,34 +204,40 @@ Finds member(s) whose attributes contain any of the entered keywords and display
 
 ### Sorting Members : `sort`
 
-Finds person(s) whose attributes contain any of the given keywords and, returns them as a list.
+Activate or De-activate a sorting order applied to displayed list of members.
 
-Format: `find PREFIX/KEYWORD [MORE_KEYWORDS]`
+**Format:** `sort PREFIX/ORDER` OR `sort none`
 
+<box type="info" seamless>
+
+**Notes:**
 * Only 1 `PREFIX` is allowed in the command
-    * Prefix `id/` finds by Membership ID.
-    * Prefix `n/` finds by Name.
-    * Prefix `p/` finds by Phone number.
-    * Prefix `e/` finds by Email.
-    * Prefix `a/` finds by Address(Postal Code).
-    * Prefix `m/` finds by Membership Expiry Date.
-* At least 1 `KEYWORD` must be provided.
-    * Persons matching at least one keyword will be returned (i.e. `OR` search).<br>
-      e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-    * The order of the keywords does not matter.<br>
-      e.g. `Hans Bo` will match `Bo Hans`
-* Only full keywords will be matched<br>
-  e.g. `Han` will not match `Hans`
-* Keywords are case-insensitive.<br>
-  e.g `hans` will match `Hans`
+  * Prefix `id/` sorts by Membership ID.
+  * Prefix `n/` sorts by Name.
+  * Prefix `p/` sorts by Phone number.
+  * Prefix `e/` sorts by Email.
+  * Prefix `a/` sorts by Address (Postal Code).
+  * Prefix `m/` sorts by Membership Expiry Date.
+* Only 1 `ORDER` must be provided<br>
+  (unless `sort none` is used to disable sorting).
+  * Order can be either `asc` or `desc` to sort members in ascending or descending order respectively.
+  * Order is case-insensitive.
+
+</box>
+
+<box type="tip" seamless>
+
+**Tip:** Sorting order will be "turned on" and applied across commands unless tunred off by `sort none`.
+
+</box>
 
 Example input:
-* `find n/bernice` <br>
-  ![command for 'find n/bernice'](images/findBerniceCommand.png)
+* `sort n/desc` <br>
+  ![command for 'sort n/desc'](images/sortNameDescCommand.png)
 
 Example output:
-* Returns `Bernice Yu` <br>
-  ![result for 'find n/bernice'](images/findBerniceResult.png)
+* Returns names of members sorted in descending order <br>
+  ![result for 'sort n/desc'](images/sortNameDescResult.png)
 
 ---
 
