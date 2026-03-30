@@ -151,11 +151,11 @@ Format: `edit MEMBERSHIP_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [m/EXPIRY_D
 * Existing values will be updated to the input values.
 
 
-Example input:
+**Example input:**
 *  `edit 1000 p/91234567 e/johndoe@example.com` <br> <br>
 ![command for 'edit 1000 p/91234567 e/johndoe@example.com'](images/editPhoneEmailCommand.png)
 
-Example output:
+**Example output:**
 * Updates the phone number and email of member at ID 1000 <br> <br>
 ![result for 'edit 1000 p/91234567 e/johndoe@example.com'](images/editPhoneEmailResult.png)
 
@@ -231,11 +231,11 @@ Activate or De-activate a sorting order applied to displayed list of members.
 
 </box>
 
-Example input:
+**Example input:**
 * `sort n/desc` <br>
   ![command for 'sort n/desc'](images/sortNameDescCommand.png)
 
-Example output:
+**Example output:**
 * Returns names of members sorted in descending order <br>
   ![result for 'sort n/desc'](images/sortNameDescResult.png)
 
