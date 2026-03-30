@@ -72,7 +72,7 @@ Alternatively you could simply double click GymContactsPro.jar file.
 ### Before We Begin . . .
 <box type="info" seamless>
 
-**Here are some notes about the command formats.<br>
+**These are some notes about the command formats.<br>
 Notes here apply to all features introduced below (where applicable), and will not be repeated**
 <br>
 
@@ -210,7 +210,7 @@ Edits an existing member among the registered gym members.
 ![command for 'edit 1000 p/91234567 e/johndoe@example.com'](images/editPhoneEmailCommand.png)
 
 **Example output:**
-* Updated the `PHONE` and `EMAIL` of member with `MEMBERSHIP_ID` of `1000`, together with a `Edited person: ...` success message.<br><br>
+* Edited the `PHONE` and `EMAIL` of member with `MEMBERSHIP_ID` of `1000`, together with a `Edited person: ...` success message.<br><br>
 ![result for 'edit 1000 p/91234567 e/johndoe@example.com'](images/editPhoneEmailResult.png)
 
 ---
@@ -252,14 +252,14 @@ Finds member(s) matching any of the given keywords.
   ![command for 'find n/bernice'](images/findBerniceCommand.png)
 
 **Example output:**
-* Displayed finding `Bernice Yu` in a list, together with a `(No. of) persons listed` success message.<br><br>
+* Found `Bernice Yu`, together with a `(No. of) persons listed` success message.<br><br>
   ![result for 'find n/bernice'](images/findBerniceResult.png)
 
 ---
 
 ### Sorting Members : `sort`
 
-Activate or De-activate a sorting order.
+Sorts the list of registered gym members by the specified order.
 
 **Format:** `sort PREFIX/ORDER` OR `sort none`
 
@@ -307,7 +307,8 @@ Delete all registered gym members after confirmation.
 <box type="info" seamless>
 
 **Note:**
-* A warning page will pop up.
+* A warning page will pop up to confirm the deletion of all data.
+* This command is irreversible. Please be careful when using it.
 * The user is asked to confirm his/her command.
 * “Y” means all the data will be deleted, “N” means clear command will be cancelled. Meanwhile, clicking the corresponding buttons has the same function.
 * After confirmation, the pop up window will give feedback on his/her decision and close soon after.
@@ -316,7 +317,12 @@ Delete all registered gym members after confirmation.
 <box type="tip" seamless>
 
 **Tip:**
-* Pending edit
+* These are the possible ways to confirm the deletion of all data:
+  * Clicking the `Yes` button.
+  * Hitting the `Y` key.
+* These are the possible ways to cancel the deletion of all data:
+  * Clicking the `No` button.
+  * Hitting the `N` key.
 
 </box>
 
