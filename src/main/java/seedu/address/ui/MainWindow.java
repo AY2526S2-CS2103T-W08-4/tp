@@ -224,6 +224,11 @@ public class MainWindow extends UiPart<Stage> {
             clearConfirmationStage.initModality(Modality.APPLICATION_MODAL);
             clearConfirmationStage.setResizable(false);
             clearConfirmationStage.setScene(scene);
+            clearConfirmationStage.setOnCloseRequest(event -> {
+                event.consume();
+                handleClearConfirmationNo();
+            });
+
         }
 
         clearConfirmationLabel.setText(message);
