@@ -5,13 +5,13 @@
       "src": "AboutUs.md",
       "title": "About Us",
       "headings": {
-        "about-us": "About Us",
-        "project-team": "Project team",
+        "about-us": "About Us 🧑‍💼",
+        "project-team": "Project Team",
         "sun-heqiao": "SUN HEQIAO",
-        "jasher-lim": "JASHER LIM",
-        "senthil-vaibhava-ram": "SENTHIL VAIBHAVA RAM",
+        "zhou-jingbin": "ZHOU JINGBIN",
         "isaac-abraham": "ISAAC ABRAHAM",
-        "zhou-jingbin": "ZHOU JINGBIN"
+        "jasher-lim": "JASHER LIM",
+        "senthil-vaibhava-ram": "SENTHIL VAIBHAVA RAM"
       },
       "headingKeywords": {}
     },
@@ -40,7 +40,7 @@
       "src": "DeveloperGuide.md",
       "title": "Developer Guide",
       "headings": {
-        "gymcontactspro-developer-guide": "GymContactsPro Developer Guide",
+        "gymcontactspro-developer-guide": "GymContactsPro Developer Guide 📖",
         "acknowledgements": "Acknowledgements",
         "setting-up-getting-started": "Setting up, getting started",
         "design": "Design",
@@ -107,23 +107,25 @@
       "src": "UserGuide.md",
       "title": "User Guide",
       "headings": {
-        "gymcontactspro-user-guide": "GymContactsPro User Guide",
-        "quick-start": "Quick start",
+        "gymcontactspro-user-guide-i": "GymContactsPro User Guide ℹ️",
+        "table-of-contents": "Table of Contents",
+        "quick-start": "Quick Start",
         "features": "Features",
-        "notes-about-the-command-format": "Notes about the command format:",
-        "viewing-help-help": "Viewing help : help",
-        "adding-a-person-add": "Adding a person : add",
-        "listing-all-persons-list": "Listing all persons : list",
-        "editing-a-person-edit": "Editing a person : edit",
-        "locating-person-s-find": "Locating person(s) : find",
-        "deleting-a-person-delete": "Deleting a person : delete",
-        "clearing-all-entries-clear": "Clearing all entries : clear",
-        "exiting-the-program-exit": "Exiting the program : exit",
-        "saving-the-data": "Saving the data",
-        "editing-the-data-file": "Editing the data file",
+        "before-we-begin": "Before We Begin . . .",
+        "adding-a-member-add": "Adding a Member : add",
+        "listing-all-members-list": "Listing All Members : list",
+        "deleting-member-s-delete": "Deleting Member(s) : delete",
+        "editing-a-member-edit": "Editing a Member : edit",
+        "finding-member-s-find": "Finding Member(s) : find",
+        "sorting-members-sort": "Sorting Members : sort",
+        "clearing-all-data-clear": "Clearing All Data : clear",
+        "getting-help-help": "Getting Help : help",
+        "exiting-the-app-exit": "Exiting the App : exit",
+        "saving-data": "Saving Data",
+        "editing-the-data-file": "Editing the Data File",
         "faq": "FAQ",
-        "known-issues": "Known issues",
-        "command-summary": "Command summary"
+        "known-issues": "Known Issues",
+        "command-summary": "Command Summary"
       },
       "headingKeywords": {}
     },
@@ -131,38 +133,10 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "gymcontactspro": "GymContactsPro",
+        "gymcontactspro": "GymContactsPro 🏋️‍♀️",
         "getting-started": "Getting Started",
         "acknowledgements-libraries-used": "Acknowledgements (Libraries Used)"
       },
-      "headingKeywords": {}
-    },
-    {
-      "src": "team/Hack-Zac.md",
-      "headings": {},
-      "headingKeywords": {}
-    },
-    {
-      "src": "team/jasher.md",
-      "headings": {},
-      "headingKeywords": {}
-    },
-    {
-      "src": "team/sun-heqiao.md",
-      "headings": {},
-      "headingKeywords": {}
-    },
-    {
-      "src": "team/vaibhava.md",
-      "title": "John Doe's Project Portfolio Page",
-      "headings": {
-        "project-addressbook-level-3": "Project: AddressBook Level 3"
-      },
-      "headingKeywords": {}
-    },
-    {
-      "src": "team/zhou_jingbin.md",
-      "headings": {},
       "headingKeywords": {}
     }
   ]
