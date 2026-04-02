@@ -129,20 +129,6 @@ Displays the list of all registered gym members.
 
 **Format:** `list`
 
-<box type="info" seamless>
-
-**Note:**
-* Pending edit
-
-</box>
-
-<box type="tip" seamless>
-
-**Tip:**
-* Pending edit
-
-</box>
-
 **Example input:**
 * `list`<br><br>
 ![command for 'list'](images/listCommand.png)
@@ -375,18 +361,12 @@ Exits the app.
 
 **Format:** `exit`
 
-<box type="info" seamless>
-
-**Note:**
-* Pending edit
-
-</box>
-
 <box type="tip" seamless>
 
 **Tip:**
-* Pending edit
-
+* These are the alternative ways to exit the app:
+  * Clicking the `Exit` button in the `File` menu.
+  * Closing the app window directly by clicking the `X` button in the top right corner.
 </box>
 
 **Example input:**
@@ -400,7 +380,23 @@ Exits the app.
 
 ### Saving Data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Data of all members is saved in the computer's storage automatically after any command that changes member data.
+There is no need to save manually.
+
+<box type="info" seamless>
+
+**Note:**
+* Data is saved to `[JAR file location]/data/addressbook.json`
+* Saving is typically very fast and completes within milliseconds.
+
+</box>
+
+<box type="tip" seamless>
+
+**Tip:**
+* It is recommended to regularly back up your `addressbook.json` file to a secure location.
+
+</box>
 
 ---
 
@@ -421,8 +417,12 @@ Furthermore, certain edits can cause the AddressBook to behave in unexpected way
 
 ## FAQ
 
-**Q**: How do I transfer my data to another Computer?<br>
+**Q**: How do I transfer my data to another computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+
+**Q**: What happens if the application freezes or is forcibly closed?<br>
+**A**: If the application freezes (but is not forcefully closed), all your previous changes are safely saved. However, if the application is forcibly closed while saving data (e.g., force quit, system crash, power loss), the data file may become corrupted. In such cases, the application will start with empty member data on the next run. To prevent data loss, it is recommended to regularly back up your `addressbook.json` file.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
