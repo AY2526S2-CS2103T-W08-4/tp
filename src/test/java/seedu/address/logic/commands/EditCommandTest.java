@@ -217,18 +217,24 @@ public class EditCommandTest {
         MembershipId secondId = model.getFilteredPersonList().get(INDEX_SECOND_PERSON.getZeroBased()).getMembershipId();
         final EditCommand standardCommand = new EditCommand(firstId, DESC_AMY);
 
+        // same values -> returns true
         EditPersonDescriptor copyDescriptor = new EditPersonDescriptor(DESC_AMY);
         EditCommand commandWithSameValues = new EditCommand(firstId, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 
+        // same object -> returns true
         assertTrue(standardCommand.equals(standardCommand));
 
+        // null -> returns false
         assertFalse(standardCommand.equals(null));
 
+        // different types -> returns false
         assertFalse(standardCommand.equals(new ClearCommand()));
 
+        // different membership ID -> returns false
         assertFalse(standardCommand.equals(new EditCommand(secondId, DESC_AMY)));
 
+        // different descriptor -> returns false
         assertFalse(standardCommand.equals(new EditCommand(firstId, DESC_BOB)));
     }
 
