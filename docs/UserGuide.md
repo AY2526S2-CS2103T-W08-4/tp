@@ -27,7 +27,6 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
   - [Getting Help: `help`](#getting-help-help)
   - [Exiting the App: `exit`](#exiting-the-app-exit)
   - [Saving Data](#saving-data)
-  - [Editing the Data File](#editing-the-data-file)
 - [FAQ](#faq)
 - [Known Issues](#known-issues)
 - [Command Summary](#command-summary)
@@ -401,27 +400,6 @@ Exits the app.
 ### Saving Data
 
 AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
----
-
-### Editing the Data File
-
-Data of all members are saved as a JSON file `[JAR file location]/data/addressbook.json`.<br>
-**Advanced users** are welcome to update data directly by editing that data file.
-
-<box type="info" seamless>
-
-**Note:**
-* For a detailed guide on the JSON and how to safely edit the data file in the context of GymContactsPro, refer to the [JSON Guide for GymContactsPro](JsonGuide.md).
-
-</box>
-
-<box type="warning" seamless>
-
-**Caution:**
-If your changes to the data file make its format invalid, GymContactsPro will discard all data and start with an empty data file at the next run.  Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the GymContactsPro to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
-</box>
 
 <div style="page-break-after: always;"></div>
 
