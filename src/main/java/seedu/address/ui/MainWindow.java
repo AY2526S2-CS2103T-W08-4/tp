@@ -224,11 +224,7 @@ public class MainWindow extends UiPart<Stage> {
             clearConfirmationStage.initModality(Modality.APPLICATION_MODAL);
             clearConfirmationStage.setResizable(false);
             clearConfirmationStage.setScene(scene);
-            clearConfirmationStage.setOnCloseRequest(event -> {
-                event.consume();
-                handleClearConfirmationNo();
-            });
-
+            clearConfirmationStage.setOnCloseRequest(event -> handleConfirmationWindowClose(event));
         }
 
         clearConfirmationLabel.setText(message);
@@ -358,5 +354,13 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+    /**
+     * Handles the close request for the clear confirmation window.
+     * Treats closing the window as a cancellation (equivalent to clicking "No").
+     */
+    void handleConfirmationWindowClose(javafx.stage.WindowEvent event) {
+        event.consume();
+        handleClearConfirmationNo();
     }
 }
