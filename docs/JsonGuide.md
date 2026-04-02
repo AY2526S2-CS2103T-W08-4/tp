@@ -4,7 +4,7 @@ title: "JSON Guide"
 pageNav: 3
 ---
 
-# JSON Guide for GymContactsPro Data Files 📋
+# JSON Guide for GymContactsPro Data File 📋
 
 **JSON** (JavaScript Object Notation) is a lightweight data format used for storing and exchanging data. 
 GymContactsPro uses JSON to store member information in the `addressbook.json` file.
