@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.person.EmailContainsKeywordsPredicate;
 import seedu.address.model.person.ExpiryDateContainsKeywordsPredicate;
+import seedu.address.model.person.MembershipIdContainsPredicate;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.PhoneContainsKeywordsPredicate;
 import seedu.address.model.person.PostalCodeContainsKeywordsPredicate;
@@ -130,6 +131,29 @@ public class FindCommandParserTest {
     @Test
     public void parse_onlyWhitespaceAfterPrefix_throwsParseException() {
         assertParseFailure(parser, " n/    ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_membershipIdKeywords_returnsFindCommand() {
+        FindCommand expectedFindCommandSingle =
+                new FindCommand(new MembershipIdContainsPredicate(Arrays.asList("1000")));
+        assertParseSuccess(parser, " id/1000", expectedFindCommandSingle);
+
+        FindCommand expectedFindCommandMultiple =
+                new FindCommand(new MembershipIdContainsPredicate(Arrays.asList("1000", "1001", "1002")));
+        assertParseSuccess(parser, " id/1000 1001 1002", expectedFindCommandMultiple);
+    }
+
+    @Test
+    public void parse_noPrefixProvided_throwsParseException() {
+        assertParseFailure(parser, " ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+    }
+
+    @Test
+    public void parse_prefixWithOnlyWhitespaceValue_throwsParseException() {
+        assertParseFailure(parser, " n/   ",
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
     }
 
