@@ -33,7 +33,9 @@ public class SortCommandParser implements Parser<SortCommand> {
                 // Future: Add support for other prefixes
         };
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, allPrefixes);
-        // Future: Add more prefixes for id, phone, email, address, expiry date
+
+        // Use utility method to check for duplicate identical prefixes
+        argMultimap.verifyNoDuplicatePrefixesFor(allPrefixes);
 
         // Check that exactly one prefix is used
         Prefix usedPrefix = null;
