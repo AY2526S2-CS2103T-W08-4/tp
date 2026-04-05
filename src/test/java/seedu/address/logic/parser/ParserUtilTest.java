@@ -177,16 +177,16 @@ public class ParserUtilTest {
 
     @Test
     public void parseMembershipId_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS,
-                () -> ParserUtil.parseMembershipId(INVALID_MEMBERSHIP_ID));
-        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS,
-                () -> ParserUtil.parseMembershipId("+1000"));
-        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS,
-                () -> ParserUtil.parseMembershipId("0001000"));
-        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS,
-                () -> ParserUtil.parseMembershipId("999"));
-        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS,
-                () -> ParserUtil.parseMembershipId("10000"));
+        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS, () -> ParserUtil
+                .parseMembershipId(INVALID_MEMBERSHIP_ID));
+        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS, () -> ParserUtil
+                .parseMembershipId("+1000"));
+        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS, () -> ParserUtil
+                .parseMembershipId("0001000"));
+        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS, () -> ParserUtil
+                .parseMembershipId("999"));
+        assertThrows(ParseException.class, MembershipId.MESSAGE_CONSTRAINTS, () -> ParserUtil
+                .parseMembershipId("10000"));
     }
 
     @Test
