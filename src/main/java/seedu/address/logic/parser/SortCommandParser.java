@@ -1,27 +1,43 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ID;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 import seedu.address.model.util.PersonComparators;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Comparator;
 
 /**
  * Parses input arguments and creates a new SortCommand object.
  */
 public class SortCommandParser implements Parser<SortCommand> {
+    // COMPARATOR_MAP: prefix string -> (order -> comparator)
+    private static final Map<String, Map<String, Comparator<Person>>> COMPARATOR_MAP = new HashMap<>();
+    static {
+        Map<String, Comparator<Person>> nameMap = new HashMap<>();
+        nameMap.put("asc", PersonComparators.NAME_ASC);
+        nameMap.put("desc", PersonComparators.NAME_DESC);
+        nameMap.put("none", null);
+        COMPARATOR_MAP.put("n/", nameMap);
+        // Future: Add more maps for id, phone, email, address, expiry date
+    }
+
     @Override
     public SortCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args,
-                PREFIX_NAME);
+        Prefix[] allPrefixes = new Prefix[] {
+                PREFIX_NAME,
+                // Future: Add support for other prefixes
+        };
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, allPrefixes);
         // Future: Add more prefixes for id, phone, email, address, expiry date
 
         // Check that exactly one prefix is used
         Prefix usedPrefix = null;
-        for (Prefix prefix : new Prefix[]{PREFIX_NAME}) {
-            // Future: Add more prefixes to the array above
+        for (Prefix prefix : allPrefixes) {
             if (argMultimap.getValue(prefix).isPresent()) {
                 // More than one prefix detected
                 if (usedPrefix != null) {
@@ -31,8 +47,8 @@ public class SortCommandParser implements Parser<SortCommand> {
             }
         }
 
-        // No prefix detected or preamble is not empty
-        if (usedPrefix == null || !argMultimap.getPreamble().isEmpty()) {
+        // No prefix detected
+        if (usedPrefix == null) {
             throw new ParseException(SortCommand.MESSAGE_INVALID_PREFIX);
         }
 
@@ -44,31 +60,20 @@ public class SortCommandParser implements Parser<SortCommand> {
             throw new ParseException(SortCommand.MESSAGE_INVALID_ORDER);
         }
 
-        // Determine the appropriate comparator based on the prefix and order via nested switch statements
-        Comparator<Person> comparator = null;
+        // Comparator lookup
         String prefixString = usedPrefix.getPrefix();
+        Map<String, Comparator<Person>> orderMap = COMPARATOR_MAP.get(prefixString);
 
-        switch (prefixString) {
-            case "n/":
-                switch (order) {
-                    case "asc":
-                        comparator = PersonComparators.NAME_ASC;
-                        break;
-                    case "desc":
-                        comparator = PersonComparators.NAME_DESC;
-                        break;
-                    case "none":
-                        comparator = null;
-                        break;
-                    default:
-                        throw new ParseException(SortCommand.MESSAGE_INVALID_ORDER);
-                }
-                break;
-            // Future: Add more cases for id, phone, email, address, expiry date
-
-            default:
+        if (orderMap == null) {
                 throw new ParseException(SortCommand.MESSAGE_INVALID_PREFIX);
         }
+
+        if (!orderMap.containsKey(order)) {
+            throw new ParseException(SortCommand.MESSAGE_INVALID_ORDER);
+        }
+
+        Comparator<Person> comparator = orderMap.get(order);
+
         return new SortCommand(comparator, prefixString, order);
     }
 }
