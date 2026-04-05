@@ -349,7 +349,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The command format was invalid or the member details are invalid
+* 1a. The command format was invalid
   * 1a1. GymContactsPro shows an error message
 
   Use case ends
@@ -364,7 +364,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. Gym Manager requests to view the list of members
+1. Gym Manager requests to view the list of all registered members
 2. GymContactsPro displays the complete list of members
 
     Use case ends
@@ -376,8 +376,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends
 
-* 1b. There are no members in the system.
-    * 1b1. GymContactsPro shows an error message.
+* 1b. There are no members in the system
+    * 1b1. GymContactsPro shows an error message
 
     Use case ends
 
@@ -393,7 +393,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Command format is invalid or no membership ID(s) is provided
+* 1a. The command format was invalid 
   * 1a1. GymContactsPro shows an error message
 
   Use case ends
@@ -401,9 +401,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * 1b. No member with given membership ID exists in the system.
   * 1b1. GymContactsPro shows an error message.
 
-  Use case ends.
+  Use case ends
 
-* 1c. Multiple membership IDs provided but only a few exists in the system
+* 1c. Multiple membership IDs are provided, but only a few exist in the system
   * 1c1. GymContactsPro shows an error message
 
 **Use case : UC04 : View list of executable commands**
@@ -414,6 +414,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. GymContactsPro displays the list of available executable commands and their formats
 
     Use case ends
+
+**Extensions**
+
+* 1a. The command format was invalid
+  * 1a1. GymContactsPro shows an error message
+
+    Use case ends
+
 
 **Use case : UC05 : Find gym member(s)**
 
@@ -426,15 +434,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Command format is invalid or search field is invalid
+* 1a. Command format is invalid
   * 1a1. GymContactsPro shows an error message
 
     Use case ends
 
-* 2a. There are no members matching the provided criteria
-    * 2a1. GymContactsPro shows an error message
+* 1b. There are no members matching the provided criteria
+    * 1b1. GymContactsPro shows an error message
 
     Use case ends
+
+* 1c. Only some members match the provided criteria
+    * 1c1. GymContactsPro only shows a list of members matching the provided criteria
 
 
 **Use case : UC06 : Edit details of an existing member**
@@ -449,13 +460,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The command format is invalid, or no membership ID is provided, or no fields to edit are invalid
-  * 1a1. GymContactsPro shows an error message prompting for the correct format
+* 1a. The command format is invalid
+  * 1a1. GymContactsPro shows an error message
 
     Use case ends
 
 * 1b. The new details create a duplicate member
-  * 1b1. GymContactsPro rejects the edit and shows a duplicate fields error message
+  * 1b1. GymContactsPro shows a error message
 
     Use case ends
 
@@ -475,7 +486,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. Command format was invalid or, no membership ID is provided or, new validity is invalid
+* 1a. The command format was invalid 
   * 1a1. GymContactsPro shows an error message
 
     Use case ends
@@ -486,18 +497,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends
 
 
-**Use case: UC08 : Sort gym members **
+**Use case: UC08 : Sort gym members**
 
 **MSS**
 
 1. Gym Manager requests to sort members by provided field and order
-2. GymContactsPro displays the list of members sorted in the requested order
+2. GymContactsPro displays the list of members sorted in the requested criteria
 
     Use case ends.
 
 **Extensions**
 
-* 1a. Command format was invalid or, the sorting field is valid or an invalid sort order
+* 1a. The command format was invalid
   * 1a1. GymContactsPro shows an error message
 
     Use case ends.
