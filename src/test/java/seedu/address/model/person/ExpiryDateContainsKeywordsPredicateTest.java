@@ -1,5 +1,9 @@
 package seedu.address.model.person;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.Arrays;
 import java.util.Collections;
 
@@ -7,49 +11,47 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.testutil.PersonBuilder;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class ExpiryDateContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
         ExpiryDateContainsKeywordsPredicate firstPredicate =
-                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("12-12-2026"));
+                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("2026-12-12"));
         ExpiryDateContainsKeywordsPredicate secondPredicate =
-                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("13-12-2026"));
+                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("2026-12-13"));
 
         // same object -> true
-        assertEquals(firstPredicate, firstPredicate);
+        assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> true
         ExpiryDateContainsKeywordsPredicate firstPredicateCopy =
-                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("12-12-2026"));
-        assertEquals(firstPredicate, firstPredicateCopy);
+                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("2026-12-12"));
+        assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different type -> false
-        assertNotEquals(1, firstPredicate);
+        assertFalse(firstPredicate.equals(1));
 
         // null -> false
-        assertNotEquals(null, firstPredicate);
+        assertFalse(firstPredicate.equals(null));
 
         // different keywords -> false
-        assertNotEquals(firstPredicate, secondPredicate);
+        assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
     public void test_expiryDateContainsKeywords_returnsTrue() {
         // one keyword matches
         ExpiryDateContainsKeywordsPredicate predicate =
-                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("12-12-2026"));
+                new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("2026-12-12"));
         assertTrue(predicate.test(new PersonBuilder()
-                .withMembershipExpiryDate("12-12-2026")
+                .withMembershipExpiryDate("2026-12-12")
                 .build()));
 
         // multiple keywords, one matches
         predicate = new ExpiryDateContainsKeywordsPredicate(
-                Arrays.asList("13-12-2026", "12-12-2026"));
+                Arrays.asList("2026-12-13", "2026-12-12"));
         assertTrue(predicate.test(new PersonBuilder()
-                .withMembershipExpiryDate("12-12-2026")
+                .withMembershipExpiryDate("2026-12-12")
                 .build()));
     }
 
@@ -59,19 +61,29 @@ public class ExpiryDateContainsKeywordsPredicateTest {
         ExpiryDateContainsKeywordsPredicate predicate =
                 new ExpiryDateContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new PersonBuilder()
-                .withMembershipExpiryDate("12-12-2026")
+                .withMembershipExpiryDate("2026-12-12")
                 .build()));
 
         // non-matching keyword
-        predicate = new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("13-12-2026"));
+        predicate = new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("2026-12-13"));
         assertFalse(predicate.test(new PersonBuilder()
-                .withMembershipExpiryDate("12-12-2026")
+                .withMembershipExpiryDate("2026-12-12")
                 .build()));
 
         // partial match should fail
         predicate = new ExpiryDateContainsKeywordsPredicate(Collections.singletonList("12-12"));
         assertFalse(predicate.test(new PersonBuilder()
-                .withMembershipExpiryDate("12-12-2026")
+                .withMembershipExpiryDate("2026-12-12")
                 .build()));
+    }
+
+    @Test
+    public void toStringMethod() {
+        ExpiryDateContainsKeywordsPredicate predicate =
+                new ExpiryDateContainsKeywordsPredicate(Arrays.asList("2026-12-12", "2026-12-13"));
+
+        String expected = ExpiryDateContainsKeywordsPredicate.class.getCanonicalName()
+                + "{keywords=[2026-12-12, 2026-12-13]}";
+        assertEquals(expected, predicate.toString());
     }
 }
