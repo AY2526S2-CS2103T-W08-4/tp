@@ -3,6 +3,8 @@ package seedu.address.logic.parser;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
+
+import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
@@ -37,17 +39,8 @@ public class SortCommandParser implements Parser<SortCommand> {
         // Use utility method to check for duplicate identical prefixes
         argMultimap.verifyNoDuplicatePrefixesFor(allPrefixes);
 
-        // Check that exactly one prefix is used
-        Prefix usedPrefix = null;
-        for (Prefix prefix : allPrefixes) {
-            if (argMultimap.getValue(prefix).isPresent()) {
-                // More than one prefix detected
-                if (usedPrefix != null) {
-                    throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
-                }
-                usedPrefix = prefix;
-            }
-        }
+        // Use utility method to check that exactly one prefix is present
+        Prefix usedPrefix = argMultimap.verifyExactlyOnePrefixPresentFor(SortCommand.MESSAGE_USAGE, allPrefixes);
 
         // No prefix detected
         if (usedPrefix == null) {
