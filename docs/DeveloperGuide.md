@@ -715,6 +715,9 @@ testers are expected to do more *exploratory* testing.
    
    1. Test case: `find n/ale`<br>
       Expected: Displayed list is empty, together with a `0 member(s) listed` message shown
+
+   1. Test case: `find find n/alex`<br>
+      Expected: No change in displayed list, together with a `Invalid command format` error message shown
    
    1. Test case: `find n/alex`<br>
       Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) listed` success message shown
@@ -728,11 +731,14 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `find n/alex yu`<br>
       Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
 
-   1. Test case: `FIND N/ALEX YU` (only after test case 9)<br>
-      Expected: No change in displayed list, together with a `No change in displayed list` message shown
+   1. Test case: `FIND N/ALEX YU` (standalone)<br>
+     Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
+
+   1. Test case: `FIND N/ALEX YU` (only after test case 10)<br>
+     Expected: No change in displayed list, together with a `No change in displayed list` message shown
    
    1. Test case: `find n/alex p/87438807`<br>
-      Expected: No change in displayed list, together with a `Invalid command format` error message shown
+     Expected: No change in displayed list, together with a `Invalid command format` error message shown
 
 <br>
 
