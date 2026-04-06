@@ -63,7 +63,16 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person",
+        "adding-a-member": "Adding a member",
+        "listing-members": "Listing members",
+        "deleting-member-s": "Deleting member(s)",
+        "editing-a-member": "Editing a member",
+        "finding-member-s": "Finding member(s)",
+        "sorting-members": "Sorting members",
+        "renewing-membership": "Renewing membership",
+        "clearing-all-members": "Clearing all members",
+        "viewing-help": "Viewing help",
+        "exiting-the-program": "Exiting the program",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}
