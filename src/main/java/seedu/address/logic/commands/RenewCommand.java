@@ -67,9 +67,14 @@ public class RenewCommand extends Command {
         LocalDate today = LocalDate.now();
         LocalDate currentExpiry = personToRenew.getMembershipExpiryDate().value;
 
-        // Renewal starts from whichever is later: current expiry date or today.
-        LocalDate baseDate = currentExpiry.isAfter(today) ? currentExpiry : today;
-        LocalDate newExpiryDate = baseDate.plusDays(daysToAdd);
+        LocalDate newExpiryDate;
+        if (currentExpiry.isBefore(today)) {
+            // Expired: count today as day 1, so +1 => today
+            newExpiryDate = today.plusDays(daysToAdd - 1);
+        } else {
+            newExpiryDate = currentExpiry.plusDays(daysToAdd);
+        }
+
 
         MembershipExpiryDate renewedExpiry = new MembershipExpiryDate(newExpiryDate);
 
