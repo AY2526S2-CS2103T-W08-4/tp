@@ -31,9 +31,9 @@
     - [Launch and shutdown](#launch-and-shutdown)
     - [Adding a member](#adding-a-member)
     - [Listing members](#listing-members)
-    - [Deleting member(s)](#deleting-members)
+    - [Deleting member(s)](#deleting-member-s)
     - [Editing a member](#editing-a-member)
-    - [Finding member(s)](#finding-members)
+    - [Finding member(s)](#finding-member-s)
     - [Sorting members](#sorting-members)
     - [Renewing membership](#renewing-membership)
     - [Clearing all members](#clearing-all-members)
@@ -653,7 +653,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file
+   Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
 1. Saving window preferences
 
@@ -698,6 +699,44 @@ testers are expected to do more *exploratory* testing.
 <br>
 
 ### Finding member(s)
+
+1. Finding member(s) while members are either visible in the displayed list or not visible in the displayed list
+
+   1. Prerequisites: Members used are those in the sample address book
+
+   1. Test case: `fin`<br>
+      Expected: No change in displayed list, together with a `Unknown command` error message shown
+
+   1. Test case: `find`<br>
+      Expected: No change in displayed list, together with a `Invalid command format` error message shown
+
+   1. Test case: `find n/`<br>
+      Expected: No change in displayed list, together with a `Invalid command format` error message shown
+   
+   1. Test case: `find n/ale`<br>
+      Expected: Displayed list is empty, together with a `0 member(s) listed` message shown
+   
+   1. Test case: `find n/alex`<br>
+      Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) listed` success message shown
+   
+   1. Test case: `find n/alex n/yu`<br>
+      Expected: No change in displayed list, together with a `Multiple values specified for the following single-valued field(s): n/` error message shown
+
+   1. Test case: `find n/alex yu`<br>
+      Expected: Members whose names contain `alex` or `yu` or both in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
+
+   1. Test case: `find n/alex yu` (only after test case 8)<br>
+      Expected: No change in displayed list, together with a `No change in displayed list` message shown
+   
+   1. Test case: `find n/alex p/87438807`<br>
+      Expected: No change in displayed list, together with a `Invalid command format` error message shown
+
+1. Finding member(s) when all members are deleted
+
+    1. Prerequisites: All members are deleted from the address book
+
+    1. Test case: `find n/alex`<br>
+      Expected: No change in displayed list, together with a `No change in displayed list` message shown
 
 <br>
 
