@@ -44,9 +44,14 @@ public class DeleteCommand extends Command {
 
         logger.info("Executing DeleteCommand for Membership IDs: " + targetIds);
 
+        // Deduplicate IDs while preserving order
+        List<MembershipId> uniqueIds = targetIds.stream()
+            .distinct()
+            .collect(java.util.stream.Collectors.toList());
+
         // Resolve all persons first before deleting (fail fast if any ID not found)
         List<Person> personsToDelete = new ArrayList<>();
-        for (MembershipId targetId : targetIds) {
+        for (MembershipId targetId : uniqueIds) {
             Person person = model.getAddressBook().getPersonList().stream()
                 .filter(p -> p.getMembershipId().equals(targetId))
                 .findFirst()
@@ -58,7 +63,7 @@ public class DeleteCommand extends Command {
             personsToDelete.add(person);
         }
 
-        // Sort by membership ID before deleting
+        // Sort by membership ID
         personsToDelete.sort((a, b) -> Integer.compare(a.getMembershipId().value, b.getMembershipId().value));
 
         StringBuilder deletedNames = new StringBuilder();
@@ -67,6 +72,9 @@ public class DeleteCommand extends Command {
             logger.info("Successfully deleted person with Membership ID: " + person.getMembershipId());
             deletedNames.append(Messages.format(person)).append("\n");
         }
+
+        // Update filtered list so UI and storage reflect the deletion
+        model.updateFilteredPersonList(seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedNames.toString()));
     }
