@@ -178,10 +178,11 @@ Edits an existing member among the registered gym members.
 <box type="info" seamless>
 
 **Note:**
-* Edits the person at the specified `MEMBERSHIP_ID`.
+* Edits the member at the specified `MEMBERSHIP_ID`.
 * At least one of the optional fields must be provided.
 * Multiple different fields can be provided at once.
-* Existing values will be updated to the input values.
+* Existing values will be updated to the input values. Only changed fields will be updated, 
+and unchanged fields will remain unchanged.
 
 </box>
 
