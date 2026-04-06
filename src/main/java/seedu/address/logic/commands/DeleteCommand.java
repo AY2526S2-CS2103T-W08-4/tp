@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,19 @@ public class DeleteCommand extends Command {
 
     private final List<MembershipId> targetIds;
 
+    /**
+     * Creates a DeleteCommand to delete a single person with the given {@code MembershipId}.
+     */
+    public DeleteCommand(MembershipId targetId) {
+        requireNonNull(targetId);
+        this.targetIds = List.of(targetId);
+    }
+
+    /**
+     * Creates a DeleteCommand to delete multiple persons with the given {@code MembershipId}s.
+     */
     public DeleteCommand(List<MembershipId> targetIds) {
+        requireNonNull(targetIds);
         this.targetIds = targetIds;
     }
 
@@ -44,10 +57,6 @@ public class DeleteCommand extends Command {
 
         logger.info("Executing DeleteCommand for Membership IDs: " + targetIds);
 
-        // Deduplicate IDs while preserving order
-        List<MembershipId> uniqueIds = targetIds.stream()
-            .distinct()
-            .collect(java.util.stream.Collectors.toList());
         // Check for duplicate IDs
         List<MembershipId> seen = new ArrayList<>();
         for (MembershipId targetId : targetIds) {
@@ -57,8 +66,23 @@ public class DeleteCommand extends Command {
             seen.add(targetId);
         }
 
+        // Resolve all persons first before deleting (fail fast if any ID not found)
+        List<Person> personsToDelete = new ArrayList<>();
+        for (MembershipId targetId : targetIds) {
+            Person person = model.getAddressBook().getPersonList().stream()
+                .filter(p -> p.getMembershipId().equals(targetId))
+                .findFirst()
+                .orElseThrow(() -> {
+                    logger.warning("No person found with Membership ID: " + targetId);
+                    return new CommandException(
+                        String.format(Messages.MESSAGE_PERSON_NOT_FOUND, targetId));
+                });
+            personsToDelete.add(person);
+        }
+
         // Sort by membership ID
-        personsToDelete.sort((a, b) -> Integer.compare(a.getMembershipId().value, b.getMembershipId().value));
+        personsToDelete.sort((a, b) -> Integer.compare(
+            a.getMembershipId().value, b.getMembershipId().value));
 
         StringBuilder deletedNames = new StringBuilder();
         for (Person person : personsToDelete) {
@@ -68,7 +92,7 @@ public class DeleteCommand extends Command {
         }
 
         // Update filtered list so UI and storage reflect the deletion
-        model.updateFilteredPersonList(seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS);
+        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
 
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, deletedNames.toString()));
     }
