@@ -702,7 +702,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Finding member(s) while members are either visible in the displayed list or not visible in the displayed list
 
-   1. Prerequisites: Members used are those in the sample address book
+   1. Prerequisites: Members involved are those in the sample address book
 
    1. Test case: `fin`<br>
       Expected: No change in displayed list, together with a `Unknown command` error message shown
@@ -718,14 +718,17 @@ testers are expected to do more *exploratory* testing.
    
    1. Test case: `find n/alex`<br>
       Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) listed` success message shown
+
+   1. Test case: `find n/alex alex`<br>
+      Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) listed` success message shown
    
    1. Test case: `find n/alex n/yu`<br>
       Expected: No change in displayed list, together with a `Multiple values specified for the following single-valued field(s): n/` error message shown
 
    1. Test case: `find n/alex yu`<br>
-      Expected: Members whose names contain `alex` or `yu` or both in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
+      Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
 
-   1. Test case: `find n/alex yu` (only after test case 8)<br>
+   1. Test case: `FIND N/ALEX YU` (only after test case 9)<br>
       Expected: No change in displayed list, together with a `No change in displayed list` message shown
    
    1. Test case: `find n/alex p/87438807`<br>
