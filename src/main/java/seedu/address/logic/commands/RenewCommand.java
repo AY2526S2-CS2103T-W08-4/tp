@@ -54,6 +54,9 @@ public class RenewCommand extends Command {
         this.daysToAdd = daysToAdd;
     }
 
+    /**
+     * Returns true if {@code daysToAdd} is within the allowed renewal range.
+     */
     public static boolean isValidDaysToAdd(int daysToAdd) {
         return daysToAdd >= MIN_RENEW_DAYS && daysToAdd <= MAX_RENEW_DAYS;
     }
