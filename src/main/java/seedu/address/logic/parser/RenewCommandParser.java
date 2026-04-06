@@ -32,17 +32,7 @@ public class RenewCommandParser implements Parser<RenewCommand> {
         String membershipIdToken = argMultimap.getValue(PREFIX_ID).get().trim();
         String daysToken = argMultimap.getValue(PREFIX_DAYS).get().trim();
 
-        int membershipIdValue;
-        try {
-            membershipIdValue = Integer.parseInt(membershipIdToken);
-        } catch (NumberFormatException e) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RenewCommand.MESSAGE_USAGE));
-        }
-
-        if (!membershipIdToken.equals(Integer.toString(membershipIdValue))
-                || !MembershipId.isValidMembershipId(membershipIdValue)) {
-            throw new ParseException(MembershipId.MESSAGE_CONSTRAINTS);
-        }
+        MembershipId membershipId = ParserUtil.parseMembershipId(membershipIdToken);
 
         int daysToAdd;
         try {
@@ -55,7 +45,7 @@ public class RenewCommandParser implements Parser<RenewCommand> {
             throw new ParseException(RenewCommand.MESSAGE_INVALID_DAYS);
         }
 
-        return new RenewCommand(new MembershipId(membershipIdValue), daysToAdd);
+        return new RenewCommand(membershipId, daysToAdd);
 
     }
 }
