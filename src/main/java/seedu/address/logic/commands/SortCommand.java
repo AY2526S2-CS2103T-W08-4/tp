@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class SortCommand extends Command {
     public static final String COMMAND_WORD = "sort";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Toggles a sorting direction on all displayed person list by the specified prefix and order.\n"
+            + ": Toggles a sorting order on all displayed lists by the specified prefix and order.\n"
             + "Parameters: PREFIX/ORDER or 'none'\n"
             + "Exactly one prefix must be used, unless 'none' is specified.\n"
             + "Prefixes:\n"
