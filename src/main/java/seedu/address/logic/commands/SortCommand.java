@@ -2,16 +2,17 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.Messages;
-import seedu.address.commons.util.ListUtil;
-import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.Model;
-import seedu.address.model.person.Person;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
+
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.ListUtil;
+import seedu.address.commons.util.ToStringBuilder;
+import seedu.address.logic.Messages;
+import seedu.address.model.Model;
+import seedu.address.model.person.Person;
+
 
 /**
  * Sorts the currently displayed person list by a specified prefix and order.

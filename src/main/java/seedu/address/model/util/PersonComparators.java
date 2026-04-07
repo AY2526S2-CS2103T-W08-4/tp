@@ -1,8 +1,12 @@
 package seedu.address.model.util;
 
-import seedu.address.model.person.Person;
 import java.util.Comparator;
 
+import seedu.address.model.person.Person;
+
+/**
+ * Provides comparators for Person fields.
+ */
 public class PersonComparators {
     public static final Comparator<Person> NAME_ASC =
             Comparator.comparing(p -> p.getName().fullName, String.CASE_INSENSITIVE_ORDER);
