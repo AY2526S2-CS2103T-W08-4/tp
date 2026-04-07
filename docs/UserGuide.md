@@ -226,7 +226,7 @@ Find member(s) matching any of the given keywords.
   * Only full keywords will be matched<br>
   e.g. `Ber` will not match `Bernice`
   * Keywords are case-insensitive.<br>
-  e.g `bernice` will match any members with a name containing `bernice` regardless of capitalization.
+  e.g `BERNICE` will match any members with a name containing `bernice` regardless of capitalization.
 
 </box>
 
@@ -266,7 +266,7 @@ Sorts the list of registered gym members by the specified order.
   * Prefix `a/` sorts by Address (Postal Code).
   * Prefix `m/` sorts by Membership Expiry Date.
 * Only 1 `ORDER` can be provided<br>
-  (unless `sort none` is used to disable sorting and return to default order – by Membership ID).
+  (unless `sort none` is used to disable sorting to return to default order ordering – ascending Membership ID).
   * Order can be either `asc` or `desc` to sort members in ascending or descending order respectively.
 
 </box>
