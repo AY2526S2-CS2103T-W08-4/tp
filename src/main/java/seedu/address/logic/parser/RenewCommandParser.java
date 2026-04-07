@@ -27,10 +27,15 @@ public class RenewCommandParser implements Parser<RenewCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RenewCommand.MESSAGE_USAGE));
         }
 
-        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ID, PREFIX_DAYS);
-
         String membershipIdToken = argMultimap.getValue(PREFIX_ID).get().trim();
         String daysToken = argMultimap.getValue(PREFIX_DAYS).get().trim();
+
+        if (membershipIdToken.isEmpty() || daysToken.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RenewCommand.MESSAGE_USAGE));
+        }
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_ID, PREFIX_DAYS);
+
 
         MembershipId membershipId = ParserUtil.parseMembershipId(membershipIdToken);
 
