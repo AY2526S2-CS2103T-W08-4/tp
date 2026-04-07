@@ -7,7 +7,9 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -25,6 +27,8 @@ public class RenewCommand extends Command {
 
     public static final int MIN_RENEW_DAYS = 1;
     public static final int MAX_RENEW_DAYS = 730;
+
+    private static final Logger logger = LogsCenter.getLogger(RenewCommand.class);
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Renews a member's membership by Membership ID.\n"
@@ -65,6 +69,9 @@ public class RenewCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
+        logger.info("Executing RenewCommand for Membership ID: " + membershipId
+                + ", daysToAdd: " + daysToAdd);
+
         List<Person> allPersons = model.getAddressBook().getPersonList();
         Person personToRenew = null;
 
@@ -76,6 +83,7 @@ public class RenewCommand extends Command {
         }
 
         if (personToRenew == null) {
+            logger.warning("No member found with Membership ID: " + membershipId);
             throw new CommandException(String.format(Messages.MESSAGE_PERSON_NOT_FOUND, membershipId));
         }
 
@@ -104,6 +112,10 @@ public class RenewCommand extends Command {
 
         model.setPerson(personToRenew, renewedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+
+        logger.info("Successfully renewed Membership ID: " + membershipId
+                + " from " + personToRenew.getMembershipExpiryDate()
+                + " to " + renewedExpiry);
 
         return new CommandResult(String.format(MESSAGE_RENEW_PERSON_SUCCESS, personToRenew.getMembershipId(),
                 personToRenew.getMembershipExpiryDate(), renewedExpiry));
