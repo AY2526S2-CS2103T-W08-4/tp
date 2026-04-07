@@ -779,10 +779,10 @@ testers are expected to do more *exploratory* testing.
        Expected: No change in displayed list, together with a `Invalid command format` error message shown
 
     1. Test case: `sort n/`<br>
-       Expected: No change in displayed list, together with a `Invalid command format` error message shown
+       Expected: No change in displayed list, together with a `Order is either 'asc' (ascending) or 'desc' (descending)` error message shown
 
     1. Test case: `sort n/as`<br>
-       Expected: No change in displayed list, together with a `Invalid command format` error message shown
+       Expected: No change in displayed list, together with a `Order is either 'asc' (ascending) or 'desc' (descending)` error message shown
 
     1. Test case: `sort sort n/asc`<br>
        Expected: No change in displayed list, together with a `Invalid command format` error message shown

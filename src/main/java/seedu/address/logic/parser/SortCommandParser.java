@@ -21,6 +21,7 @@ import seedu.address.model.util.PersonComparators;
  * Parses input arguments and creates a new SortCommand object.
  */
 public class SortCommandParser implements Parser<SortCommand> {
+    private static final String MESSAGE_INVALID_ORDER = "Order is either 'asc' (ascending) or 'desc' (descending)";
     // COMPARATOR_MAP: prefix string -> (order -> comparator)
     private static final Map<String, Map<String, Comparator<Person>>> COMPARATOR_MAP = new HashMap<>();
     static {
@@ -93,7 +94,7 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         // Validate the sorting order
         if (!(order.equals("asc") || order.equals("desc"))) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+            throw new ParseException(MESSAGE_INVALID_ORDER);
         }
 
         // Comparator lookup
@@ -105,7 +106,7 @@ public class SortCommandParser implements Parser<SortCommand> {
         }
 
         if (!orderMap.containsKey(order)) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, SortCommand.MESSAGE_USAGE));
+            throw new ParseException(MESSAGE_INVALID_ORDER);
         }
 
         Comparator<Person> comparator = orderMap.get(order);
