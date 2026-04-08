@@ -674,7 +674,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Adding a member
 
-    1. Prerequisites: Ensure there is no existing member with the exact phone number and email address.
+    1. Prerequisites: Ensure there is no existing member with the exact phone number or email address.
 
     1. Test case: `ad`<br>
        Expected: An `Unknown command` error message shown
