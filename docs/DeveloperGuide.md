@@ -117,7 +117,7 @@ Here's a (partial) class diagram of the `Logic` component:
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete id/1000 1001")` API call as an example.
 
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete id/1000 1001` Command" />
 
 <box type="info" seamless>
 
@@ -318,13 +318,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |----------|-------------|---------------------------------------------------------------|-----------------------------------------------------------------------------|
 | `* * *`  | Gym manager | I want to add new members                                     | So that I can keep a record of new members                                  |
 | `* * *`  | Gym manager | I want to view the list of members                            | So that I understand who is currently registered to the gym                 |
-| `* * *`  | Gym manager | I want to delete a member                                     | So that I can remove incorrect or obsolete records                          |
+| `* * *`  | Gym manager | I want to delete multiple members at once                     | So that I can remove multiple records efficiently without repeated commands |
 | `* * `   | Gym manager | I want to know how to interact with the app                   | So that I can begin to use the app                                          |
 | `* *`    | Gym manager | I want to search for a member                                 | So that I can retrieve their information                                    |
 | `* *`    | Gym manager | I want to edit member's personal information                  | So that my records can stay updated with the latest information             |
 | `* *`    | Gym manager | I want to know which member's membership is close to expiring | So that I can contact members to remind them of their membership validity   |
 | `*`      | Gym manager | I renew gym member's membership expiry date                   | So that they can continue using the gym                                     |
-| `*`      | Gym manager | I want to sort member's membership expriy date                  | So that I can know which members have expired or soon to expire memberships |
+| `*`      | Gym manager | I want to sort member's membership expriy date                | So that I can know which members have expired or soon to expire memberships |
 
 
 ### Use cases
@@ -370,25 +370,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case: UC03 : Delete a gym member**
+**Use case: UC03 : Delete one or more gym members**
 
 **MSS**
 
-1. Gym Manager requests to delete a member by providing their membership ID
-2. GymContactsPro deletes the member
-3. GymContactsPro displays a success message
+1. Gym Manager requests to delete one or more members by providing their membership ID(s)
+2. GymContactsPro deletes the member(s)
+3. GymContactsPro displays a success message listing the deleted member(s) in ascending membership ID order
 
-    Use case ends.
+   Use case ends.
 
 **Extensions**
 
-* 1a. No membership is provided or format is invalid.
-  * 1a1. GymContactsPro shows an error message prompting for the correct format.
+* 1a. No membership ID is provided or the format is invalid.
+    * 1a1. GymContactsPro shows an error message prompting for the correct format.
 
   Use case ends.
 
-* 1b. No member with given membership ID exists in the system.
-  * 1b1. GymContactsPro shows an error message.
+* 1b. A duplicate membership ID is provided in the same command.
+    * 1b1. GymContactsPro shows an error message indicating the duplicate ID.
+
+  Use case ends.
+
+* 1c. Any of the provided membership IDs does not exist in the system.
+    * 1c1. GymContactsPro shows an error message. No deletions are performed.
 
   Use case ends.
 
