@@ -126,6 +126,7 @@ public class HelpWindow extends UiPart<Stage> {
      * Hides the help window.
      */
     public void hide() {
+        logger.info("Hiding Help window.");
         getRoot().hide();
     }
 

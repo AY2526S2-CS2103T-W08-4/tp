@@ -84,7 +84,10 @@ public class MainWindow extends UiPart<Stage> {
         setAccelerators();
 
         helpWindow = new HelpWindow();
-        helpWindow.getRoot().setOnHidden(event -> resultDisplay.setFeedbackToUser("Closed help window"));
+        helpWindow.getRoot().setOnHidden(event -> {
+            resultDisplay.setFeedbackToUser("Closed help window");
+            logger.info("Closed Help window.");
+        });
     }
 
     public Stage getPrimaryStage() {
@@ -135,8 +138,10 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        helpWindow.getRoot().setOnHidden(event ->
-                resultDisplay.setFeedbackToUser("Closed help window"));
+        helpWindow.getRoot().setOnHidden(event -> {
+            resultDisplay.setFeedbackToUser("Closed help window");
+            logger.info("Closed Help window.");
+        });
 
         StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
         statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
@@ -164,9 +169,11 @@ public class MainWindow extends UiPart<Stage> {
     public void handleHelp() {
         if (!helpWindow.isShowing()) {
             helpWindow.show();
+            logger.info("Opened Help window.");
             resultDisplay.setFeedbackToUser("Opened help window");
         } else {
             helpWindow.focus();
+            logger.info("Focused on Help window.");
         }
     }
 
@@ -236,6 +243,7 @@ public class MainWindow extends UiPart<Stage> {
                 isProcessingClearConfirmation = false;
 
                 if (isManualCloseClearConfirmation) {
+                    logger.info("User closed clear confirmation window manually.");
                     resultDisplay.setFeedbackToUser("Clear command cancelled");
                 }
             });
@@ -251,6 +259,7 @@ public class MainWindow extends UiPart<Stage> {
 
         if (!clearConfirmationStage.isShowing()) {
             commandBox.disableInput();
+            logger.info("Showing clear confirmation window.");
             clearConfirmationStage.show();
         }
 
@@ -270,6 +279,7 @@ public class MainWindow extends UiPart<Stage> {
             return;
         }
 
+        logger.info("User confirmed clear operation.");
         isProcessingClearConfirmation = true;
         isManualCloseClearConfirmation = false;
         yesButton.setDisable(true);
@@ -283,6 +293,7 @@ public class MainWindow extends UiPart<Stage> {
             clearConfirmationLabel.setText("All data has been deleted successfully");
             closeClearConfirmationWindowAfterDelay();
         } catch (CommandException e) {
+            logger.warning("Failed to clear address book: " + e.getMessage());
             resultDisplay.setFeedbackToUser(e.getMessage());
             clearConfirmationLabel.setText(e.getMessage());
             closeClearConfirmationWindowAfterDelay();
@@ -299,6 +310,7 @@ public class MainWindow extends UiPart<Stage> {
             return;
         }
 
+        logger.info("User cancelled clear operation.");
         isProcessingClearConfirmation = true;
         isManualCloseClearConfirmation = false;
 
