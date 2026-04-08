@@ -820,6 +820,32 @@ testers are expected to do more *exploratory* testing.
 
 ### Clearing all members
 
+1. Clearing all contacts when the address book is not empty
+
+   1. Prerequisites: Address book contains the sample contacts
+
+   2. Test case: `clea`<br>
+      Expected: No change in displayed list, together with a `Unknown command error` message shown
+   3. Test case: `clear 123`<br>
+      Expected: No change in displayed list, together with a `Invalid command format` error message shown
+   4. Test case: `clear`<br>
+      Expected: A warning window opens, no contacts are deleted yet, and `Opened warning window` message is shown
+   5. Test case: `clear`, then press `N`<br>
+      Expected: Warning window shows `Deletion has been cancelled.` and closes after 2 seconds. No change in displayed list, together with a `Clear command cancelled`. message shown
+   6. Test case: `clear`, then press `Y`<br>
+      Expected: Warning window shows `All the data has been deleted successfully.` and closes after 2 seconds. All contacts are removed from the displayed list, together with a `All the data has been deleted successfully.` success message shown
+   7. Test case: `clear`, then click `No`<br>
+      Expected: Warning window shows `Deletion has been cancelled.` and closes after 2 seconds. No change in displayed list, together with a `Clear command cancelled`. message shown
+   8. Test case: `clear`, then click `Yes`<br>
+      Expected: Warning window shows `All the data has been deleted successfully.` and closes after 2 seconds. All contacts are removed from the displayed list, together with a `All the data has been deleted successfully.` success message shown
+   9. Test case: `clear`, then close the warning window<br>
+      Expected: Warning window closes. No change in displayed list, together with a `Closed warning window` message shown
+
+2. Clearing all contacts when the address book is already empty
+   1. Prerequisites: Address book is empty
+   2. Test case: `clear`<br>
+      Expected: No warning window is opened. No change in displayed list, together with a `No data to clear` message shown
+
 <br>
 
 ### Viewing help
