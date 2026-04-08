@@ -560,76 +560,79 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Glossary
 
-**AB3 (AddressBook Level-3)**
+**AB3 (AddressBook Level-3)**  
 The baseline codebase from which GymContactsPro is developed. Refers to the SE-EDU AddressBook-Level3 project.
 
-**Command**
+**Address Book**  
+The internal data structure that stores all member records in GymContactsPro.
+
+**Command**  
 A text instruction entered by the Gym Manager to perform an operation in GymContactsPro.
 
-**Command Format**
+**Command Format**  
 The required structure for entering a valid command in GymContactsPro.
 
-**Command Line Interface (CLI)**
+**Command Line Interface (CLI)**  
 A text-based interface that allows the Gym Manager to interact with GymContactsPro by typing commands instead of using graphical buttons.
 
-**Duplicate Member**
-A situation where a member being added or edited has the same identifying fields as an existing member.
+**Duplicate Member**  
+A situation where a member being added or edited has the same identifying fields (such as phone number or email) as an existing member.
 
-**Error Message**
+**Error Message**  
 A system-generated message displayed when the requested operation cannot be completed.
 
-**Front-Desk Staff**
+**Front-Desk Staff**  
 Personnel working at the gym reception who manage member registrations, check-ins, and membership records using GymContactsPro.
 
-**Gym Manager**
+**Gym Manager**  
 The primary user of GymContactsPro who manages gym member records and memberships.
 
-**GymContactsPro**
+**GymContactsPro**  
 A command-line based gym member management application designed to help gym managers efficiently manage member records and memberships.
 
-**JavaFX**
+**JavaFX**  
 A Java GUI framework used to render the visual interface of GymContactsPro, displaying member records in a structured layout.
 
-**JSON (JavaScript Object Notation)**
+**JSON (JavaScript Object Notation)**  
 A human-readable file format used by GymContactsPro to store member data persistently.
 
-**Mainstream Operating Systems**
+**Mainstream Operating Systems**  
 Widely used operating systems such as Windows, macOS, and Linux that GymContactsPro is designed to run on.
 
-**Member**
+**Member**  
 An individual registered in GymContactsPro with personal and membership information.
 
-**Member Lookup**
-The process of searching for and retrieving a member's record from the system using fields such as name, phone number, or membership ID.
-
-**Member Record**
+**Member Record**  
 A stored set of information about a gym member, including personal details and membership information.
 
-**Membership Expiry Date**
+**Membership Expiry Date**  
 The date on which a member's membership becomes invalid.
 
-**Membership ID**
+**Membership ID**  
 A unique identifier assigned to each gym member.
 
-**Membership Validity**
+**Membership Validity**  
 The period during which a member's gym membership is considered active.
 
-**Offline Usage**
+**Offline Usage**  
 The ability to use GymContactsPro without an Internet connection after installation.
 
-**Persistent Storage**
+**Persistent Storage**  
 The method used by GymContactsPro to store member data so that it remains available after the application is closed and reopened.
 
-**Prefix**
+**Prefix**  
 A short identifier used before a value in a command to indicate the type of data being entered (for example, `n/`, `p/`, `e/`).
 
-**Search Field**
+**Sample Data**  
+A set of pre‑loaded member records provided with GymContactsPro for demonstration and testing purposes.
+
+**Search Field**  
 A specific field (such as name, phone number, or email) used to locate members in the system.
 
-**Sorting**
+**Sorting**  
 The process of arranging members in a specific order.
 
-**Success Message**
+**Success Message**  
 A confirmation message shown after a command has been executed successfully.
 
 <div style="page-break-after: always;"></div>
