@@ -57,7 +57,7 @@ Alternatively you could simply double click GymContactsPro.jar file.
 
    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01, 138601 m/2026-11-12` : Adds a contact named `John Doe` to the Address Book.
 
-   * `delete 1006` : Deletes the person with membership ID 1006 from the list.
+   * `delete id/1006` : Deletes the member with membership ID 1006 from the list.
 
    * `clear` : Deletes all contacts.
 
@@ -149,15 +149,19 @@ Deletes the specified member(s) from the list of registered gym members.
 <box type="info" seamless>
 
 **Note:**
-* Deletes the person with the specified `MEMBERSHIP_ID`.
-* The MEMBERSHIP_ID refers to the Membership ID number shown in the displayed person list.
+* Deletes the member(s) with the specified `MEMBERSHIP_ID`(s).
+* At least one `MEMBERSHIP_ID` must be provided
+* Multiple IDs must be space-separated after `id/`.
+* If any `MEMBERSHIP_ID` is invalid, not found or duplicated, no deletions will be performed.
+* Deleted members are listed in ascending order of Membership ID in the message box.
 
 </box>
 
 <box type="tip" seamless>
 
 **Tip:**
-* Pending edit
+* You can delete multiple members in one command by providing multiple IDs after `id/`.<br>
+  e.g. `delete id/1000 1001 1002` deletes members with IDs 1000, 1001 and 1002 in one command.
 
 </box>
 
@@ -166,9 +170,8 @@ Deletes the specified member(s) from the list of registered gym members.
   ![result for 'delete id/1000'](images/deleteCommand.png)
 
 **Example output:**
-* Deleted the member with `MEMBERSHIP_ID` of `1000` from the list of registered gym members, together with a `Deleted Person: ...` success message.<br><br>
+* Deleted the member(s) with the specified `MEMBERSHIP_ID`(s), together with a `Deleted member(s): ...` success message listing each deleted member.<br> e.g Deleted person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40, 388066; Membership ID: 1000; Membership Expiry Date: 2027-01-15 <br>
   ![result for 'delete id/1000'](images/deleteResult.png)
-
 ---
 
 ### Editing a Member : `edit`
@@ -471,7 +474,7 @@ Action     | Format, Examples
 **Edit**   | `edit MEMBERSHIP_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [m/EXPIRY_DATE]`<br> e.g.,`edit 1000 p/91234567 e/johndoe@example.com`
 **Find**   | `find PREFIX/KEYWORD [MORE_KEYWORDS]`<br> e.g., `find n/bernice`
 **Sort**   | `sort PREFIX/ORDER` & `sort none`<br> e.g., `sort n/desc`
-**Renew**   | `renew id/MEMBERSHIP_ID d/DAYS`<br> e.g., `renew id/1000 d/7`
+**Renew**  | `renew id/MEMBERSHIP_ID d/DAYS`<br> e.g., `renew id/1000 d/7`
 **Clear**  | `clear`
 **Help**   | `help`
 **Exit**   | `exit`

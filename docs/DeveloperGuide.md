@@ -125,7 +125,7 @@ Here's a (partial) class diagram of the `Logic` component:
 
 The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete id/1000 1001")` API call as an example.
 
-<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
+<puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete id/1000 1001` Command" />
 
 <box type="info" seamless>
 
@@ -319,13 +319,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 |----------|-------------|---------------------------------------------------------------|-----------------------------------------------------------------------------|
 | `* * *`  | Gym manager | I want to add new members                                     | So that I can keep a record of new members                                  |
 | `* * *`  | Gym manager | I want to view the list of members                            | So that I understand who is currently registered to the gym                 |
-| `* * *`  | Gym manager | I want to delete a member                                     | So that I can remove incorrect or obsolete records                          |
+| `* * *`  | Gym manager | I want to delete multiple members at once                     | So that I can remove multiple records efficiently without repeated commands |
 | `* * `   | Gym manager | I want to know how to interact with the app                   | So that I can begin to use the app                                          |
 | `* *`    | Gym manager | I want to search for a member                                 | So that I can retrieve their information                                    |
 | `* *`    | Gym manager | I want to edit member's personal information                  | So that my records can stay updated with the latest information             |
 | `* *`    | Gym manager | I want to know which member's membership is close to expiring | So that I can contact members to remind them of their membership validity   |
 | `*`      | Gym manager | I renew gym member's membership expiry date                   | So that they can continue using the gym                                     |
-| `*`      | Gym manager | I want to sort member's membership expriy date                  | So that I can know which members have expired or soon to expire memberships |
+| `*`      | Gym manager | I want to sort member's membership expriy date                | So that I can know which members have expired or soon to expire memberships |
 
 
 ### Use cases
@@ -697,21 +697,46 @@ testers are expected to do more *exploratory* testing.
 
 ### Deleting member(s)
 
-1. Deleting a person while all persons are being shown
+1. Deleting a single member while all members are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: At least one member is in the address book.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   1. Test case: `delete id/1000`<br>
+      Expected: `Deleted member(s):` followed by `Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40, 388066; Membership ID: 1000; Membership Expiry Date: 2027-01-15`
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Test case: `delete id/0999`<br>
+      Expected: No member is deleted. `Membership ID must be a 4-digit integer from 1000 to 9999` is shown in the status message.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   1. Test case: `delete id/+1000`<br>
+      Expected: No member is deleted. `Membership ID must be a 4-digit integer from 1000 to 9999` is shown in the status message.
 
-1. _{ more test cases …​ }_
+   1. Test case: `delete id/999`<br>
+      Expected: No member is deleted. `Membership ID must be a 4-digit integer from 1000 to 9999` is shown in the status message.
 
+   1. Test case: `delete id/10000`<br>
+      Expected: No member is deleted. `Membership ID must be a 4-digit integer from 1000 to 9999` is shown in the status message.
+
+   1. Test case: `delete id/9999` (where 9999 does not exist)<br>
+      Expected: No member is deleted. `No person with Membership ID 9999 found` is shown in the status message.
+
+   1. Other incorrect delete commands to try: `delete`, `delete 1000`, `delete id/abc`, `delete id/`<br>
+      Expected: `Invalid command format!` followed by the command usage message is shown in the status message.
+
+1. Deleting multiple members in one command
+
+   1. Prerequisites: At least 2 members in the address book with IDs 1000, 1001 and 1002.
+
+   1. Test case: `delete id/1000 1001`<br>
+      Expected: `Deleted member(s):` followed by details of members 1000 and 1001, listed in ascending membership ID order, each on a new line.
+
+   1. Test case: `delete id/1000 1000` (duplicate ID)<br>
+      Expected: No member is deleted. `Duplicate Membership ID detected: 1000` is shown in the status message.
+
+   1. Test case: `delete id/1000 9999` (where 9999 does not exist)<br>
+      Expected: No member is deleted. `No person with Membership ID 9999 found` is shown in the status message. Member 1000 is also not deleted.
+
+   1. Test case: `delete id/1002 1000 1001` (IDs provided out of order)<br>
+      Expected: `Deleted member(s):` followed by details of members 1000, 1001 and 1002 in ascending membership ID order, each on a new line.      
 <br>
 
 ### Editing a member
