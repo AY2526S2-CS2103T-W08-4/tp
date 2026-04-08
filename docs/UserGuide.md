@@ -150,11 +150,10 @@ Deletes the specified member(s) from the list of registered gym members.
 
 **Note:**
 * Deletes the member(s) with the specified `MEMBERSHIP_ID`(s).
-* The `MEMBERSHIP_ID` refers to the Membership ID number shown in the displayed member list.
+* At least one `MEMBERSHIP_ID` must be provided
 * Multiple IDs must be space-separated after `id/`.
-* Duplicate IDs in the same command are not allowed.
-* If any `MEMBERSHIP_ID` is invalid or not found, no deletions will be performed.
-* Deleted members are listed in ascending order of Membership ID.
+* If any `MEMBERSHIP_ID` is invalid, not found or duplicated, no deletions will be performed.
+* Deleted members are listed in ascending order of Membership ID in the message box.
 
 </box>
 
@@ -169,10 +168,9 @@ Deletes the specified member(s) from the list of registered gym members.
 **Example input:**
 * `delete id/1000`<br><br>
   ![result for 'delete id/1000'](images/deleteCommand.png)
-* `delete id/1000 1001`
 
 **Example output:**
-* Deleted the member(s) with the specified `MEMBERSHIP_ID`(s), together with a `Deleted member(s): ...` success message listing each deleted member.<br><br>
+* Deleted the member(s) with the specified `MEMBERSHIP_ID`(s), together with a `Deleted member(s): ...` success message listing each deleted member.<br> e.g Deleted person: Alex Yeoh; Phone: 87438807; Email: alexyeoh@example.com; Address: Blk 30 Geylang Street 29, #06-40, 388066; Membership ID: 1000; Membership Expiry Date: 2027-01-15 <br>
   ![result for 'delete id/1000'](images/deleteResult.png)
 ---
 
