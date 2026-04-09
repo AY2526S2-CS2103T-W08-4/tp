@@ -19,9 +19,10 @@
   </StackPane>
 
   <VBox spacing="3" HBox.hgrow="ALWAYS">
-    <HBox alignment="CENTER_LEFT" spacing="6">
+    <HBox alignment="CENTER_LEFT" spacing="8">
       <Label fx:id="id" styleClass="cell-index-label" />
       <Label fx:id="name" styleClass="cell-primary-label" />
+      <Label fx:id="membershipStatus" />
     </HBox>
     <Label fx:id="membershipId" styleClass="cell-membership-id-label" />
     <Label fx:id="membershipExpiryDate" styleClass="cell-secondary-label" />
@@ -32,6 +33,4 @@
       <Label fx:id="email" styleClass="cell-secondary-label" />
     </HBox>
   </VBox>
-
-  <Label fx:id="membershipStatus" />
 </HBox>
