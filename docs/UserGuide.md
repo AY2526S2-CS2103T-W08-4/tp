@@ -156,6 +156,12 @@ Some example commands you can try:
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
+* Formats for the fields are:
+  * **Phone:** Must be exactly 8 digits long and start with 8 or 9.
+  * **Email:** Must be a properly formatted email address (e.g., `johndoe@example.com`).
+  * **Address:** must end with a valid 6-digit postal code.
+  * **Expiry Date:** Must be a valid date in the format `YYYY-MM-DD` and **cannot be before the current date**.
+<br><br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
 
@@ -171,13 +177,7 @@ Adds a new gym member to the list of registered gym members.
 <box type="info" seamless>
 
 **Note:**
-
-To ensure data accuracy, the information provided must follow these rules:
 * All five fields are required: `NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, and `EXPIRY_DATE`.
-* **Phone:** Must be exactly 8 digits long and start with 8 or 9.
-* **Email:** Must be a properly formatted email address (e.g., `johndoe@example.com`).
-* **Address:** must end with a valid 6-digit postal code.
-* **Expiry Date:** Must be a valid date in the format `YYYY-MM-DD` and **cannot be before the current date**.
 
 </box> 
 
@@ -395,6 +395,7 @@ Deletes all registered gym members after confirmation.
     * Click the `Yes` button <br>
   OR
     * Type the `Y` key. <br><br>
+
 * To cancel the deletion:
     * Click the `No` button <br>
   OR 
@@ -420,10 +421,13 @@ Shows a help window containing the URL of the User Guide and a summary of execut
 <box type="tip" seamless>
 
 **Tip:**
+<br>
 * Alternative ways to open the help window:
     * Clicking the `Help F1` button in the `Help` menu <br>
   OR
-    * Typing the `Fn + F1` keys.
+    * Typing the `Fn + F1` keys. <br><br>
+
+* You can close the help window by hitting the `esc` key.
 
 </box>
 
