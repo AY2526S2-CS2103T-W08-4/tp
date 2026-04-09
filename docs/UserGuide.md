@@ -47,8 +47,11 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W08-4/tp/releases).
    * The folder containing the downloaded `GymContactsPro.jar` is your _home folder_ for GymContactsPro.
-   * You can move the `GymContactsPro.jar` file to any _home folder_ you like.
-<br><br>
+   * For the best experience, move the `GymContactsPro.jar` file to a dedicated and easily accessible folder, such as: <br>
+   **Windows:** `Documents\GymContactsPro` <br>
+   **macOS:** `~/Documents/GymContactsPro` <br>
+   **Linux:** `~/Documents/GymContactsPro` 
+   <br><br>
 
 3. On your respective Operating System (OS), open a terminal to launch GymContactsPro.
 
@@ -65,7 +68,7 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
       <box type="info" seamless>
 
    PATH_TO_HOME_FOLDER is the path to the folder where you placed the `GymContactsPro.jar` file in. If your _home folder_
-   was your Downloads folder, the command would be `cd C:\Users\<YOUR_USERNAME>\Downloads`
+   was your `Downloads` folder, the command would be `cd C:\Users\<YOUR_USERNAME>\Downloads`
 
       </box>
 
@@ -82,7 +85,7 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
       <box type="info" seamless>
 
    PATH_TO_HOME_FOLDER is the path to the folder where you placed the `GymContactsPro.jar` file in. If your _home folder_
-   was your Downloads folder, the command would be `cd ~/Downloads`
+   was your `Downloads` folder, the command would be `cd ~/Downloads`
 
       </box>
 
@@ -99,7 +102,7 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
       <box type="info" seamless>
 
    PATH_TO_HOME_FOLDER is the path to the folder where you placed the `GymContactsPro.jar` file in. If your _home folder_
-   was your Downloads folder, the command would be `cd ~/Downloads`
+   was your `Downloads` folder, the command would be `cd ~/Downloads`
 
       </box>
 
