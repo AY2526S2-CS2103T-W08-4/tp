@@ -32,6 +32,8 @@ public class PersonCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
+    private Label avatarLabel;
+    @FXML
     private Label name;
     @FXML
     private Label id;
@@ -57,13 +59,27 @@ public class PersonCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
-        address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
         membershipId.setText("Membership ID: " + person.getMembershipId().value);
-        membershipExpiryDate.setText("Membership Expiry: " + person.getMembershipExpiryDate().toString());
+        if (address != null) {
+            address.setText(person.getAddress().value);
+        }
+        if (membershipExpiryDate != null) {
+            membershipExpiryDate.setText("Membership Expiry: " + person.getMembershipExpiryDate().toString());
+        }
 
         updateStatusLabel();
         setupAutoStatusUpdate();
+
+        String initials = person.getName().fullName.trim().length() >= 2
+            ? person.getName().fullName.substring(0, 1).toUpperCase()
+            + person.getName().fullName.split(" ")[person.getName().fullName.split(" ").length - 1]
+            .substring(0, 1).toUpperCase()
+            : person.getName().fullName.substring(0, 1).toUpperCase();
+        avatarLabel.setText(initials);
+
+
+
     }
 
     /**

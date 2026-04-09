@@ -2,39 +2,34 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-  <stylesheets>
-    view/PersonCard.css
-  </stylesheets>
-  <GridPane HBox.hgrow="ALWAYS">
-    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150" />
-    </columnConstraints>
-    <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
-      <padding>
-        <Insets top="5" right="5" bottom="5" left="15" />
-      </padding>
-      <HBox spacing="8" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label">
-          <minWidth>
-            <!-- Ensures that the label text is never truncated -->
-            <Region fx:constant="USE_PREF_SIZE" />
-          </minWidth>
-        </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
-        <Label fx:id="membershipStatus" />
-      </HBox>
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="membershipId" styleClass="cell_small_label" text="\$membershipId" />
-      <Label fx:id="membershipExpiryDate" styleClass="cell_small_label" text="\$membershipExpiryDate" />
-    </VBox>
-  </GridPane>
+<HBox id="cardPane" xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      alignment="CENTER_LEFT" spacing="12" styleClass="card-pane">
+  <padding>
+    <Insets top="10" right="14" bottom="10" left="14" />
+  </padding>
+
+  <StackPane minWidth="40" minHeight="40" maxWidth="40" maxHeight="40"
+             styleClass="avatar-circle">
+    <Label fx:id="avatarLabel" styleClass="avatar-label" />
+  </StackPane>
+
+  <VBox spacing="3" HBox.hgrow="ALWAYS">
+    <HBox alignment="CENTER_LEFT" spacing="6">
+      <Label fx:id="id" styleClass="cell-index-label" />
+      <Label fx:id="name" styleClass="cell-primary-label" />
+    </HBox>
+    <Label fx:id="membershipId" styleClass="cell-membership-id-label" />
+    <HBox spacing="8" alignment="CENTER_LEFT">
+      <Label fx:id="phone" styleClass="cell-secondary-label" />
+      <Label text="·" styleClass="cell-secondary-label" />
+      <Label fx:id="email" styleClass="cell-secondary-label" />
+    </HBox>
+  </VBox>
+
+  <Label fx:id="membershipStatus" />
 </HBox>

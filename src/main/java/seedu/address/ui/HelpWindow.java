@@ -75,6 +75,7 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        getRoot().getScene().getRoot().setStyle("-fx-background-color: #111318;");
         helpMessage.setWrapText(true);
 
         getRoot().getScene().setOnKeyPressed(event -> {
