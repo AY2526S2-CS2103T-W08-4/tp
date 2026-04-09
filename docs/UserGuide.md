@@ -151,7 +151,7 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
 * Extraneous characters for commands that do not take in fields (such as `help`, `list`, `exit` and `clear`) will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
-* Rules for the value of fields are:
+* Rules for the fields are:
   * **Membership ID:** Must be a 4-digit number from `1000` to `9999`
   * **Name:** Must be non-empty.
   * **Phone:** Must be exactly 8 digits long and start with 8 or 9.
