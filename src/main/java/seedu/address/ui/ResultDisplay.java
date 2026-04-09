@@ -32,6 +32,26 @@ public class ResultDisplay extends UiPart<Region> {
     public void setFeedbackToUser(String feedbackToUser) {
         requireNonNull(feedbackToUser);
         resultDisplay.setText(feedbackToUser);
-    }
 
+        boolean isError = feedbackToUser.startsWith("Invalid")
+            || feedbackToUser.startsWith("Unknown")
+            || feedbackToUser.startsWith("Error")
+            || feedbackToUser.startsWith("No ")
+            || feedbackToUser.contains("is not a valid")
+            || feedbackToUser.contains("should be")
+            || feedbackToUser.contains("cannot")
+            || feedbackToUser.contains("does not exist");
+
+        if (isError) {
+            resultDisplay.getStyleClass().remove("result-display-success");
+            if (!resultDisplay.getStyleClass().contains("result-display-error")) {
+                resultDisplay.getStyleClass().add("result-display-error");
+            }
+        } else {
+            resultDisplay.getStyleClass().remove("result-display-error");
+            if (!resultDisplay.getStyleClass().contains("result-display-success")) {
+                resultDisplay.getStyleClass().add("result-display-success");
+            }
+        }
+    }
 }

@@ -61,12 +61,8 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         email.setText(person.getEmail().value);
         membershipId.setText("Membership ID: " + person.getMembershipId().value);
-        if (address != null) {
-            address.setText(person.getAddress().value);
-        }
-        if (membershipExpiryDate != null) {
-            membershipExpiryDate.setText("Membership Expiry: " + person.getMembershipExpiryDate().toString());
-        }
+        address.setText(person.getAddress().value);
+        membershipExpiryDate.setText("Expiry: " + person.getMembershipExpiryDate().toString());
 
         updateStatusLabel();
         setupAutoStatusUpdate();

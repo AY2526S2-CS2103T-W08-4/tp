@@ -24,6 +24,8 @@
       <Label fx:id="name" styleClass="cell-primary-label" />
     </HBox>
     <Label fx:id="membershipId" styleClass="cell-membership-id-label" />
+    <Label fx:id="membershipExpiryDate" styleClass="cell-secondary-label" />
+    <Label fx:id="address" styleClass="cell-secondary-label" />
     <HBox spacing="8" alignment="CENTER_LEFT">
       <Label fx:id="phone" styleClass="cell-secondary-label" />
       <Label text="·" styleClass="cell-secondary-label" />

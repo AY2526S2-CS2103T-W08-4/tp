@@ -404,11 +404,11 @@
     -fx-background-color: transparent;
     -fx-font-family: "Consolas", "Segoe UI Light", monospace;
     -fx-font-size: 12pt;
-    -fx-text-fill: #4ade80;
+    -fx-text-fill: #888888;
 }
 
 .result-display .label {
-    -fx-text-fill: #4ade80 !important;
+    -fx-text-fill: #888888 !important;
 }
 .avatar-circle {
     -fx-background-color: #1e2028;
@@ -553,5 +553,15 @@
 }
 .menu-item:focused {
     -fx-background-color: #1e2028;
+}
+.result-display-error {
+    -fx-text-fill: #f87171 !important;
+}
+.result-display-success {
+    -fx-text-fill: #4ade80;
+}
+
+.result-display-error {
+    -fx-text-fill: #f87171;
 }
 
