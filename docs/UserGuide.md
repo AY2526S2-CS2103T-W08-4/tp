@@ -343,7 +343,8 @@ Sorts the list of registered gym members by the specified order.
   (unless `sort none` is used to disable sorting to return to default order ordering – ascending Membership ID).
   * Order can be either `asc` or `desc` to sort members in ascending or descending order respectively. <br><br>
 * Sorting order, regardless of whether it is `asc` or `desc`, will be "turned on" and
-  applied on displayed lists across all commands unless "turned off" by `sort none`
+  applied on displayed lists across all commands unless "turned off" by `sort none`<br><br>
+* When multiple members have the same value for the chosen sorting field (e.g. two members with the name `Alice`), their Membership ID will be used as a secondary sorting criterion.
 
 </box>
 
