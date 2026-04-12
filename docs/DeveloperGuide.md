@@ -557,7 +557,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 10. Invalid commands or inputs should not cause the application to crash. The system should display an informative error message and continue running.
 11. The product is intended for single-user desktop use and is not required to support concurrent editing by multiple staff members.
 12. The app should be designed such that users can accomplish all tasks through the executable commands, without needing to access or modify data files manually.
-13. TPrioritize intuitive design and comprehensive messaging in the app. Users should easily understand operations and troubleshoot errors without needing to access logs.
+13. The app should be designed to protect users from accidentally deleting all data with clear warning messages since users are not expected to deal with data files directly.
+14. To prioritize intuitive design and comprehensive messaging in the app. Users should easily understand operations and troubleshoot errors without needing to access logs.
 
 ### Glossary
 
