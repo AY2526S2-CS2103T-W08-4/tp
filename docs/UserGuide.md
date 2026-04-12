@@ -174,7 +174,8 @@ Adds a new gym member to the list of registered gym members.
 <box type="info" seamless>
 
 **Note:**
-* All five fields are required: `NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `EXPIRY_DATE`
+* All five fields are required: `NAME`, `PHONE_NUMBER`, `EMAIL`, `ADDRESS`, `EXPIRY_DATE`<br><br>
+* Duplicate members (based on `PHONE` or `EMAIL`) cannot be added.
 
 </box>
 
@@ -253,7 +254,8 @@ Edits an existing gym member among the registered gym members.
 <br><br>
 * Existing values will be updated with the provided values. 
   * If some of the provided fields are identical to the original values, those values will remain unchanged.
-  * If all of the provided values are identical to original values, no edits will be performed.
+  * If all of the provided values are identical to original values, no edits will be performed.<br><br>
+* Editing members to create duplicates (based on `PHONE` or `EMAIL` or both) is not allowed.
 
 </box>
 
@@ -520,7 +522,7 @@ Action     | Format, Examples
 -----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **Add**    | `add n/NAME p/PHONE e/EMAIL a/ADDRESS m/EXPIRY_DATE`<br> e.g., `add n/Alfred Goh p/88574393 a/Blk 886 Waterloo Street, #03-514, 736886 e/gohfred@gmail.com m/2028-01-01`
 **List**   | `list`
-**Delete** | `delete id/MEMBERSHIP_ID`<br> e.g., `delete id/1000`
+**Delete** | `delete id/MEMBERSHIP_ID [MORE_MEMBERSHIP_IDS]`<br> e.g., `delete id/1000`
 **Edit**   | `edit MEMBERSHIP_ID [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [m/EXPIRY_DATE]`<br> e.g.,`edit 1000 p/91234567 e/johndoe@example.com`
 **Find**   | `find PREFIX/KEYWORD [MORE_KEYWORDS]`<br> e.g., `find n/bernice`
 **Sort**   | `sort PREFIX/ORDER` OR `sort none`<br> e.g., `sort n/desc`
