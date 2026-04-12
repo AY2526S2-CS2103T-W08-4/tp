@@ -556,7 +556,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 9. The application should be installable and usable by a single manager without requiring a database server, external hosting, or Internet access.
 10. Invalid commands or inputs should not cause the application to crash. The system should display an informative error message and continue running.
 11. The product is intended for single-user desktop use and is not required to support concurrent editing by multiple staff members.
-
+12. The app should be designed such that users can accomplish all tasks through the executable commands, without needing to access or modify data files manually.
+13. The app should be designed to protect users from accidentally deleting all data with clear warning messages since users are not expected to deal with data files directly.
+14. To prioritize intuitive design and comprehensive messaging in the app. Users should easily understand operations and troubleshoot errors without needing to access logs.
 
 ### Glossary
 
@@ -832,19 +834,19 @@ testers are expected to do more *exploratory* testing.
       Expected: No change in displayed list, together with a `Invalid command format` error message shown
    
    1. Test case: `find n/alex`<br>
-      Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) listed` success message shown
+      Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) found` success message shown
 
    1. Test case: `find n/alex alex`<br>
-      Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) listed` success message shown
+      Expected: Members whose names contain `alex` in any capitalization are displayed in a list, together with a `1 member(s) found` success message shown
    
    1. Test case: `find n/alex n/yu`<br>
       Expected: No change in displayed list, together with a `Multiple values specified for the following single-valued field(s): n/` error message shown
 
    1. Test case: `find n/alex yu`<br>
-      Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
+      Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) found` success message shown
 
    1. Test case: `FIND N/ALEX YU`<br>
-      Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) listed` success message shown
+      Expected: Members whose names contain `alex` or `yu` in any capitalization are shown in a list, together with a `2 member(s) found` success message shown
    
    1. Test case: `find n/alex p/87438807`<br>
       Expected: No change in displayed list, together with a `Invalid command format` error message shown
