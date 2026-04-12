@@ -98,6 +98,17 @@ public class EditCommand extends Command {
         if (personToEdit.equals(editedPerson)) {
             return new CommandResult(MESSAGE_NO_CHANGES);
         }
+
+        for (Person person : model.getAddressBook().getPersonList()) {
+            if (person.getMembershipId().equals(membershipId)) {
+                continue;
+            }
+            if (person.isSamePerson(editedPerson)) {
+                logger.warning("Duplicate member detected while editing Membership ID: " + membershipId);
+                throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            }
+        }
+
         List<String> changed = new ArrayList<>();
         List<String> unchanged = new ArrayList<>();
         classifyField("Name", editPersonDescriptor.getName(), personToEdit.getName(), changed, unchanged);
@@ -106,12 +117,6 @@ public class EditCommand extends Command {
         classifyField("Address", editPersonDescriptor.getAddress(), personToEdit.getAddress(), changed, unchanged);
         classifyField("Membership Expiry Date", editPersonDescriptor.getMembershipExpiryDate(),
                 personToEdit.getMembershipExpiryDate(), changed, unchanged);
-
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
-            logger.warning("Duplicate member detected while editing Membership ID: " + membershipId
-                    + "; edited member: " + editedPerson);
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
-        }
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
