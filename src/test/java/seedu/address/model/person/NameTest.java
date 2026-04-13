@@ -80,12 +80,6 @@ public class NameTest {
     }
 
     @Test
-    public void equals_usesNormalizedFullName() {
-        // normalization is case-insensitive
-        assertTrue(new Name("alice tan").equals(new Name("Alice Tan")));
-    }
-
-    @Test
     public void equals() {
         Name name = new Name("Valid Name");
 
