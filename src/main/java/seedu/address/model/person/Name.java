@@ -13,8 +13,8 @@ public class Name {
         "Names must be 1-50 characters long, start with a letter (including Unicode letters), "
             + "and may only contain letters, spaces, apostrophes ('), hyphens (-), and periods (.). "
             + "e.g. John Doe, Mary-Jane, O'Brien, Dr. Lim, Nguyễn, 毛泽东";
-
-    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[\\p{L}]+(?:[.' -]\\s*[\\p{L}]+)*$";
+    
+    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[\\p{L}]+(?:[.'/  -]\\s*[\\p{L}]+)*$";
 
     private static final int MIN_LENGTH = 1;
     private static final int MAX_LENGTH = 50;
@@ -69,12 +69,12 @@ public class Name {
         }
 
         Name otherName = (Name) other;
-        return normalizedFullName.equals(otherName.normalizedFullName); // was fullName
+        return fullName.equals(otherName.fullName);
     }
 
     @Override
     public int hashCode() {
-        return normalizedFullName.hashCode(); // consistent with equals
+        return fullName.hashCode();
     }
 
     public String getNormalizedFullName() {
