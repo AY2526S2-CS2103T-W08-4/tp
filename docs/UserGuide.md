@@ -154,8 +154,8 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
 * Rules for the fields are:
   * `MEMBERSHIP_ID`: Must be a 4-digit number from `1000` to `9999`
   * `NAME`: Must be 1–50 characters, start with a letter, and may only contain letters
-  (including international characters), spaces, apostrophes (`'`), hyphens (`-`), and periods (`.`).
-  e.g. `John Doe`, `Mary-Jane`, `O'Brien`, `Dr. Lim`, `Nguyễn Tấn Dũng`, `毛泽东`
+  (including international characters), spaces, apostrophes (`'`), hyphens (`-`), foward slahes (/) and periods (`.`).
+  e.g. `John Doe`, `Mary-Jane`, `O'Brien`, `Dr. Lim`, `Nguyễn Văn Anh`, `小明`
   * `PHONE`: Must be exactly 8 digits long and start with 8 or 9.
   * `EMAIL`: Must be a properly formatted email address (e.g. `johndoe@example.com`).
   * `ADDRESS`: Must end with a valid 6-digit postal code.
