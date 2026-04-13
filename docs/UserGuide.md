@@ -156,6 +156,7 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
   * `NAME`: Must be 1–50 characters, start with a letter, and may only contain letters
   (including international characters), spaces, apostrophes (`'`), hyphens (`-`), and periods (`.`).
   e.g. `John Doe`, `Mary-Jane`, `O'Brien`, `Dr. Lim`, `Nguyễn Tấn Dũng`, `毛泽东`
+  * `PHONE`: Must be exactly 8 digits long and start with 8 or 9.
   * `EMAIL`: Must be a properly formatted email address (e.g. `johndoe@example.com`).
   * `ADDRESS`: Must end with a valid 6-digit postal code.
   * `EXPIRY_DATE`: Must be a valid date in the format `YYYY-MM-DD` and, cannot be before the current date.
