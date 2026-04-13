@@ -42,8 +42,10 @@ public class AddressBookTest {
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
         AddressBook newData = getTypicalAddressBook();
+        int expectedNextMembershipId = newData.peekNextMembershipId();
         addressBook.resetData(newData);
         assertEquals(newData, addressBook);
+        assertEquals(expectedNextMembershipId, addressBook.peekNextMembershipId());
         assertEquals(MembershipId.MIN_ID + 7, addressBook.getNextMembershipId());
         assertTrue(addressBook.canGenerateMembershipId());
     }
@@ -57,6 +59,27 @@ public class AddressBookTest {
 
         assertEquals(Collections.emptyList(), addressBook.getPersonList());
         assertEquals(MembershipId.MIN_ID, addressBook.getNextMembershipId());
+    }
+
+    @Test
+    public void resetData_withAddressBook_preservesNextMembershipId() {
+        AddressBook newData = getTypicalAddressBook();
+        newData.getNextMembershipId();
+        int expectedNext = newData.peekNextMembershipId();
+
+        addressBook.resetData(newData);
+
+        assertEquals(expectedNext, addressBook.peekNextMembershipId());
+    }
+
+    @Test
+    public void constructor_copyConstructor_preservesNextMembershipId() {
+        AddressBook source = getTypicalAddressBook();
+        source.getNextMembershipId();
+
+        AddressBook copy = new AddressBook(source);
+
+        assertEquals(source.peekNextMembershipId(), copy.peekNextMembershipId());
     }
 
     @Test
@@ -126,6 +149,15 @@ public class AddressBookTest {
 
         assertEquals(first, second);
         assertEquals(first.hashCode(), second.hashCode());
+    }
+
+    @Test
+    public void equals_differentNextMembershipId_returnsFalse() {
+        AddressBook first = getTypicalAddressBook();
+        AddressBook second = new AddressBook(first);
+        second.getNextMembershipId();
+
+        assertFalse(first.equals(second));
     }
 
     @Test
