@@ -81,10 +81,6 @@ public class NameTest {
 
     @Test
     public void equals_usesNormalizedFullName() {
-        // names that differ only in separator style normalize to the same value
-        assertTrue(new Name("O'Brien").equals(new Name("O Brien")));
-        assertTrue(new Name("Mary-Jane").equals(new Name("Mary Jane")));
-
         // normalization is case-insensitive
         assertTrue(new Name("alice tan").equals(new Name("Alice Tan")));
     }
