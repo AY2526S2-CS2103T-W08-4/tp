@@ -64,14 +64,18 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(newData);
 
         setPersons(newData.getPersonList());
-        updateNextMembershipId();
+        if (newData instanceof AddressBook) {
+            setNextMembershipId(((AddressBook) newData).peekNextMembershipId());
+        } else {
+            updateNextMembershipId();
+        }
     }
 
     /**
      * Updates the next membership ID based on the current persons in the address book.
      * Sets it to the maximum existing ID + 1, or MIN_ID if no persons exist.
      */
-    private void updateNextMembershipId() {
+    public void updateNextMembershipId() {
         if (getPersonList().isEmpty()) {
             nextMembershipId = MembershipId.MIN_ID;
         } else {
@@ -98,6 +102,25 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns the next membership ID without incrementing.
+     */
+    public int peekNextMembershipId() {
+        return nextMembershipId;
+    }
+
+    /**
+     * Sets the next membership ID to use.
+     */
+    public void setNextMembershipId(int nextMembershipId) {
+        if (nextMembershipId < MembershipId.MIN_ID || nextMembershipId > MembershipId.MAX_ID + 1) {
+            throw new IllegalArgumentException("Next membership ID out of valid range.");
+        }
+        this.nextMembershipId = nextMembershipId;
+    }
+
+    //// person-level operations
+
+    /**
      * Returns true if a person with the same identity as {@code person} exists in the address book.
      */
     public boolean hasPerson(Person person) {
@@ -111,6 +134,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addPerson(Person p) {
         persons.add(p);
+        if (p.getMembershipId().value >= nextMembershipId) {
+            nextMembershipId = p.getMembershipId().value + 1;
+        }
     }
 
     /**
@@ -158,11 +184,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
 
         AddressBook otherAddressBook = (AddressBook) other;
-        return persons.equals(otherAddressBook.persons);
+        return persons.equals(otherAddressBook.persons)
+                && nextMembershipId == otherAddressBook.nextMembershipId;
     }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return java.util.Objects.hash(persons, nextMembershipId);
     }
 }
