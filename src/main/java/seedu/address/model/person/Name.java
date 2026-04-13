@@ -3,8 +3,6 @@ package seedu.address.model.person;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
-import java.util.Locale;
-
 /**
  * Represents a Person's name in the address book.
  * Guarantees: immutable; is valid as declared in {@link #isValidName(String)}
@@ -12,13 +10,14 @@ import java.util.Locale;
 public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Names should only contain alphanumeric characters and spaces, and it should not be blank";
+        "Names must be 1-50 characters long, start with a letter (including Unicode letters), "
+            + "and may only contain letters, spaces, apostrophes ('), hyphens (-), and periods (.). "
+            + "e.g. John Doe, Mary-Jane, O'Brien, Dr. Lim, Nguyễn, 毛泽东";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "[\\p{Alnum}][\\p{Alnum} ]*";
+    public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[\\p{L}]+(?:[.' -]\\s*[\\p{L}]+)*$";
+
+    private static final int MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 50;
 
     public final String fullName;
     private final String normalizedFullName;
@@ -30,19 +29,29 @@ public class Name {
      */
     public Name(String name) {
         requireNonNull(name);
-        String trimmedName = name.trim().replaceAll("\\s+", " ");
-        checkArgument(isValidName(trimmedName), MESSAGE_CONSTRAINTS);
-        fullName = trimmedName;
-        normalizedFullName = trimmedName.toLowerCase(Locale.ROOT);
+        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
+        this.fullName = name.trim().replaceAll("\\s+", " ");
+        this.normalizedFullName = normalize(name);
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
     public static boolean isValidName(String test) {
-        return test.matches(VALIDATION_REGEX);
+        requireNonNull(test);
+        String trimmedTest = test.trim();
+        return trimmedTest.length() >= MIN_LENGTH
+            && trimmedTest.length() <= MAX_LENGTH
+            && trimmedTest.matches(VALIDATION_REGEX);
     }
 
+    private static String normalize(String name) {
+        return name
+            .toLowerCase()
+            .replaceAll("[.' -]+", " ")
+            .replaceAll("\\s+", " ")
+            .trim();
+    }
 
     @Override
     public String toString() {
@@ -55,18 +64,17 @@ public class Name {
             return true;
         }
 
-        // instanceof handles nulls
         if (!(other instanceof Name)) {
             return false;
         }
 
         Name otherName = (Name) other;
-        return fullName.equals(otherName.fullName);
+        return normalizedFullName.equals(otherName.normalizedFullName); // was fullName
     }
 
     @Override
     public int hashCode() {
-        return fullName.hashCode();
+        return normalizedFullName.hashCode(); // consistent with equals
     }
 
     public String getNormalizedFullName() {
