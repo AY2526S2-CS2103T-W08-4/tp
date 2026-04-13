@@ -153,11 +153,12 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
 
 * Rules for the fields are:
   * `MEMBERSHIP_ID`: Must be a 4-digit number from `1000` to `9999`
-  * `NAME`: Must be non-empty.
-  * `PHONE`: Must be exactly 8 digits long and start with 8 or 9.
+  * `NAME`: Must be 1–50 characters, start with a letter, and may only contain letters
+  (including international characters), spaces, apostrophes (`'`), hyphens (`-`), and periods (`.`).
+  e.g. `John Doe`, `Mary-Jane`, `O'Brien`, `Dr. Lim`, `Nguyễn Tấn Dũng`, `毛泽东`
   * `EMAIL`: Must be a properly formatted email address (e.g. `johndoe@example.com`).
   * `ADDRESS`: Must end with a valid 6-digit postal code.
-  * `EXPIRY_DATE`: Must be a valid date in the format `YYYY-MM-DD` and, cannot be before the current date.
+  * `EXPIRY_DATE`: Must`` be a valid date in the format `YYYY-MM-DD` and, cannot be before the current date.
 <br><br>
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
   </box>
