@@ -1,59 +1,118 @@
-@Test
-public void isValidName() {
-    // null name
-    assertThrows(NullPointerException.class, () -> Name.isValidName(null));
+package seedu.address.model.person;
 
-    // invalid - empty / blank
-    assertFalse(Name.isValidName(""));
-    assertFalse(Name.isValidName(" "));
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.address.testutil.Assert.assertThrows;
 
-    // invalid - starts with non-letter
-    assertFalse(Name.isValidName("123"));
-    assertFalse(Name.isValidName("2nd"));
-    assertFalse(Name.isValidName("-Alice"));
-    assertFalse(Name.isValidName(".Bob"));
-    assertFalse(Name.isValidName("'Brien"));
+import org.junit.jupiter.api.Test;
 
-    // invalid - disallowed characters
-    assertFalse(Name.isValidName("peter*"));
-    assertFalse(Name.isValidName("^"));
-    assertFalse(Name.isValidName("John/Doe"));
-    assertFalse(Name.isValidName("John@Doe"));
+public class NameTest {
 
-    // invalid - digits within name
-    assertFalse(Name.isValidName("peter the 2nd"));
-    assertFalse(Name.isValidName("David Jr 2nd"));
+    @Test
+    public void constructor_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new Name(null));
+    }
 
-    // invalid - exceeds 50 characters
-    assertFalse(Name.isValidName("Abcdefghij Abcdefghij Abcdefghij Abcdefghij Abcdefg"));
+    @Test
+    public void constructor_invalidName_throwsIllegalArgumentException() {
+        String invalidName = "";
+        assertThrows(IllegalArgumentException.class, () -> new Name(invalidName));
+    }
 
-    // valid - plain letters
-    assertTrue(Name.isValidName("Alice"));
-    assertTrue(Name.isValidName("peter jack"));
-    assertTrue(Name.isValidName("Capital Tan"));
+    @Test
+    public void isValidName() {
+        // null name
+        assertThrows(NullPointerException.class, () -> Name.isValidName(null));
 
-    // valid - allowed separators
-    assertTrue(Name.isValidName("Mary-Jane"));
-    assertTrue(Name.isValidName("O'Brien"));
-    assertTrue(Name.isValidName("Dr. Lim"));
-    assertTrue(Name.isValidName("Jose de la Cruz"));
+        // invalid - empty / blank
+        assertFalse(Name.isValidName(""));
+        assertFalse(Name.isValidName(" "));
 
-    // valid - unicode and international names
-    assertTrue(Name.isValidName("Nguyễn Tấn Dũng"));
-    assertTrue(Name.isValidName("毛泽东"));
-    assertTrue(Name.isValidName("José"));
-    assertTrue(Name.isValidName("Björk Guðmundsdóttir"));
-    assertTrue(Name.isValidName("Наина Ельцина"));
-    assertTrue(Name.isValidName("محمد"));
+        // invalid - starts with non-letter
+        assertFalse(Name.isValidName("123"));
+        assertFalse(Name.isValidName("2nd"));
+        assertFalse(Name.isValidName("-Alice"));
+        assertFalse(Name.isValidName(".Bob"));
+        assertFalse(Name.isValidName("'Brien"));
 
-    // valid - unicode with allowed separators
-    assertTrue(Name.isValidName("Isa bin Osman"));
-    assertTrue(Name.isValidName("José de la Cruz"));
+        // invalid - disallowed characters
+        assertFalse(Name.isValidName("peter*"));
+        assertFalse(Name.isValidName("^"));
+        assertFalse(Name.isValidName("John/Doe"));
+        assertFalse(Name.isValidName("John@Doe"));
 
-    // invalid - unicode starting with non-letter
-    assertFalse(Name.isValidName("123毛泽东"));
+        // invalid - digits within name
+        assertFalse(Name.isValidName("peter the 2nd"));
+        assertFalse(Name.isValidName("David Jr 2nd"));
 
-    // valid - boundary length
-    assertTrue(Name.isValidName("A"));
-    assertTrue(Name.isValidName("Abcdefghij Abcdefghij Abcdefghij Abcdefghij Abcdef"));
+        // invalid - exceeds 50 characters
+        assertFalse(Name.isValidName("Abcdefghij Abcdefghij Abcdefghij Abcdefghij Abcdefg"));
+
+        // valid - plain letters
+        assertTrue(Name.isValidName("Alice"));
+        assertTrue(Name.isValidName("peter jack"));
+        assertTrue(Name.isValidName("Capital Tan"));
+
+        // valid - allowed separators
+        assertTrue(Name.isValidName("Mary-Jane"));
+        assertTrue(Name.isValidName("O'Brien"));
+        assertTrue(Name.isValidName("Dr. Lim"));
+        assertTrue(Name.isValidName("Jose de la Cruz"));
+
+        // valid - unicode and international names
+        assertTrue(Name.isValidName("Nguyễn Tấn Dũng"));
+        assertTrue(Name.isValidName("毛泽东"));
+        assertTrue(Name.isValidName("José"));
+        assertTrue(Name.isValidName("Björk Guðmundsdóttir"));
+        assertTrue(Name.isValidName("Наина Ельцина"));
+        assertTrue(Name.isValidName("محمد"));
+
+        // valid - unicode with allowed separators
+        assertTrue(Name.isValidName("Isa bin Osman"));
+        assertTrue(Name.isValidName("José de la Cruz"));
+
+        // invalid - unicode starting with non-letter
+        assertFalse(Name.isValidName("123毛泽东"));
+
+        // valid - boundary length
+        assertTrue(Name.isValidName("A"));
+        assertTrue(Name.isValidName("Abcdefghij Abcdefghij Abcdefghij Abcdefghij Abcdef"));
+    }
+
+    @Test
+    public void equals_usesNormalizedFullName() {
+        // names that differ only in separator style normalize to the same value
+        assertTrue(new Name("O'Brien").equals(new Name("O Brien")));
+        assertTrue(new Name("Mary-Jane").equals(new Name("Mary Jane")));
+
+        // normalization is case-insensitive
+        assertTrue(new Name("alice tan").equals(new Name("Alice Tan")));
+    }
+
+    @Test
+    public void equals() {
+        Name name = new Name("Valid Name");
+
+        // same values -> returns true
+        assertTrue(name.equals(new Name("Valid Name")));
+
+        // same object -> returns true
+        assertTrue(name.equals(name));
+
+        // null -> returns false
+        assertFalse(name.equals(null));
+
+        // different types -> returns false
+        assertFalse(name.equals(5.0f));
+
+        // different values -> returns false
+        assertFalse(name.equals(new Name("Other Valid Name")));
+    }
+
+    @Test
+    public void fullName_isDisplayNormalized() {
+        // leading/trailing whitespace trimmed, internal whitespace collapsed
+        Name name = new Name("Alice Tan");
+        assertTrue(name.fullName.equals("Alice Tan"));
+    }
 }
