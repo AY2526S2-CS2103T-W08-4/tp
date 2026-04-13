@@ -12,7 +12,7 @@ public class Name {
     public static final String MESSAGE_CONSTRAINTS =
         "Names must be 1-50 characters long, start with a letter, "
             + "and may only contain letters, spaces, apostrophes ('), hyphens (-), forward slashes (/) and periods (.). "
-            + "e.g. John Doe, Mary-Jane, O'Brien, Dr. Lim, Nguyễn, 毛泽东";
+            + "e.g. John Doe, Mary-Jane, O'Brien, Dr. Lim, Nguyễn Văn Anh, 小明";
 
     public static final String VALIDATION_REGEX = "^(?=.{1,50}$)[\\p{L}]+(?:[.'/  -]\\s*[\\p{L}]+)*$";
 
