@@ -155,7 +155,7 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
   * `MEMBERSHIP_ID`: Must be a 4-digit number from `1000` to `9999`
   * `NAME`: Valid names that are 1-50 characters long, start with a letter, and may only contain letters (including international characters), spaces, apostrophes ('), hyphens (-), forward slashes (/) and periods (.)<br>
    e.g. `John Doe`, `Mary-Jane`, `O'Brien`, `Dr. Lim`, `Thor s/o Odin`, `小明`."<br>
-   Invalid names will be rejected.<br>
+   Invalid names, such as the following, will be rejected as they contain incorrect use of punctuation.<br>
    e.g. `Mary-`, `Mary  -  Jane`, `O'`, `'O`, `Dr.`, `.Dr`, `Thor s/,`.
   * `PHONE`: Must be exactly 8 digits long and start with 8 or 9.
   * `EMAIL`: Must be a properly formatted email address (e.g. `johndoe@example.com`).

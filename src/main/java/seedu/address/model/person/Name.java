@@ -16,7 +16,7 @@ public class Name {
         + "and may only contain letters (including international characters), "
         + "spaces, apostrophes ('), hyphens (-), forward slashes (/) and periods (.)\n"
         + "e.g. John Doe, Mary-Jane, O'Brien, Dr. Lim, Thor s/o Odin, 小明\n"
-        + "Names must be valid names, invalid names will be rejected.\n"
+        + "Invalid names, such as the following, will be rejected as they contain incorrect use of punctuation.\n"
         + "e.g. Mary-, Mary  -  Jane, O', 'O, Dr., .Dr, Thor s/";
 
     public static final String MESSAGE_FIND_CONSTRAINTS =
