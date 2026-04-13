@@ -38,7 +38,6 @@ public class NameTest {
         // invalid - disallowed characters
         assertFalse(Name.isValidName("peter*"));
         assertFalse(Name.isValidName("^"));
-        assertFalse(Name.isValidName("John/Doe"));
         assertFalse(Name.isValidName("John@Doe"));
 
         // invalid - digits within name
@@ -54,6 +53,7 @@ public class NameTest {
         assertTrue(Name.isValidName("Capital Tan"));
 
         // valid - allowed separators
+        assertTrue(Name.isValidName("John/Doe"));
         assertTrue(Name.isValidName("Mary-Jane"));
         assertTrue(Name.isValidName("O'Brien"));
         assertTrue(Name.isValidName("Dr. Lim"));
