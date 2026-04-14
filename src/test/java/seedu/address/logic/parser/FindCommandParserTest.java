@@ -25,7 +25,7 @@ import seedu.address.model.person.PhoneContainsKeywordsPredicate;
 import seedu.address.model.person.PostalCodeContainsKeywordsPredicate;
 
 public class FindCommandParserTest {
-    
+
     private final FindCommandParser parser = new FindCommandParser();
 
     @Test
