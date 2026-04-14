@@ -30,6 +30,7 @@ public class Name {
     public static final String VALIDATION_REGEX = "^[\\p{L}]+(?:[.'/ -]\\s*[\\p{L}]+)*$";
 
     public final String fullName;
+
     private final String normalizedFullName;
 
     /**
