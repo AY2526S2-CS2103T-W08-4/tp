@@ -5,6 +5,7 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -135,8 +136,8 @@ public class FindCommandParserTest {
 
     @Test
     public void parse_prefixWithoutValue_throwsParseException() {
-        assertParseFailure(parser, " n/", Name.MESSAGE_CONSTRAINTS);
-        assertParseFailure(parser, " n/    ", Name.MESSAGE_CONSTRAINTS);
+        assertParseFailure(parser, " n/", Name.MESSAGE_FIND_CONSTRAINTS);
+        assertParseFailure(parser, " n/    ", Name.MESSAGE_FIND_CONSTRAINTS);
 
         assertParseFailure(parser, " p/", Phone.MESSAGE_CONSTRAINTS);
         assertParseFailure(parser, " p/    ", Phone.MESSAGE_CONSTRAINTS);
@@ -163,12 +164,6 @@ public class FindCommandParserTest {
         FindCommand expectedFindCommandMultiple =
             new FindCommand(new MembershipIdContainsPredicate(List.of("1000", "1001", "1002")));
         assertParseSuccess(parser, " id/1000 1001 1002", expectedFindCommandMultiple);
-    }
-
-    @Test
-    public void parse_invalidNameKeyword_throwsParseException() {
-        assertParseFailure(parser, " n/Alice@",
-            Name.MESSAGE_CONSTRAINTS);
     }
 
     @Test
@@ -199,5 +194,57 @@ public class FindCommandParserTest {
     public void parse_invalidMembershipExpiryDateKeyword_throwsParseException() {
         assertParseFailure(parser, " m/2020-13-01",
             MembershipExpiryDate.MESSAGE_FIND_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_nameWithMultipleKeywordsAndExtraSpaces_returnsFindCommand() {
+        // Verify that whitespace normalization is handled correctly
+        FindCommand expectedFindCommand =
+            new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("Mary", "Jane")));
+        assertParseSuccess(parser, " n/Mary    Jane", expectedFindCommand);
+    }
+
+    @Test
+    public void parse_phoneMultipleKeywordsValidation_returnsFindCommand() {
+        // All phone keywords should be validated
+        FindCommand expectedFindCommand =
+            new FindCommand(new PhoneContainsKeywordsPredicate(Arrays.asList("91234567", "98765432")));
+        assertParseSuccess(parser, " p/91234567 98765432", expectedFindCommand);
+    }
+
+    @Test
+    public void parse_phoneMultipleKeywordWithInvalid_throwsParseException() {
+        // If any phone keyword is invalid, should throw exception
+        assertParseFailure(parser, " p/91234567 invalid",
+            Phone.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_emailMultipleKeywordWithInvalid_throwsParseException() {
+        // If any email keyword is invalid, should throw exception
+        assertParseFailure(parser, " e/alice@example.com not-an-email",
+            Email.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_membershipIdMultipleKeywordWithInvalid_throwsParseException() {
+        // If any membership id keyword is invalid, should throw exception
+        assertParseFailure(parser, " id/1000 invalid",
+            MembershipId.MESSAGE_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_membershipExpiryDateMultipleKeywordWithInvalid_throwsParseException() {
+        // If any expiry date keyword is invalid, should throw exception
+        assertParseFailure(parser, " m/2026-12-31 invalid-date",
+            MembershipExpiryDate.MESSAGE_FIND_CONSTRAINTS);
+    }
+
+    @Test
+    public void parse_nameKeywordWithPunctuation_returnsFindCommand() {
+        // Names with punctuation should be accepted
+        FindCommand expectedFindCommand =
+            new FindCommand(new NameContainsKeywordsPredicate(Arrays.asList("Mary-Jane", "O'Brien")));
+        assertParseSuccess(parser, " n/Mary-Jane O'Brien", expectedFindCommand);
     }
 }

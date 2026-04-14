@@ -77,6 +77,26 @@ public class ParserUtilTest {
     }
 
     @Test
+    public void parseName_validValueWithExtraSpaces_returnsNormalizedName() throws Exception {
+        // multiple spaces between words should be normalized to single space
+        String nameWithExtraSpaces = "Rachel    Walker";
+        Name expectedName = new Name("Rachel Walker");
+        assertEquals(expectedName, ParserUtil.parseName(nameWithExtraSpaces));
+    }
+
+    @Test
+    public void parseName_validNameWithPunctuation_returnsName() throws Exception {
+        Name expectedName = new Name("Mary-Jane");
+        assertEquals(expectedName, ParserUtil.parseName("Mary-Jane"));
+
+        Name expectedNameWithApostrophe = new Name("O'Brien");
+        assertEquals(expectedNameWithApostrophe, ParserUtil.parseName("O'Brien"));
+
+        Name expectedNameWithPeriod = new Name("Dr. Lim");
+        assertEquals(expectedNameWithPeriod, ParserUtil.parseName("Dr. Lim"));
+    }
+
+    @Test
     public void parsePhone_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> ParserUtil.parsePhone((String) null));
     }
