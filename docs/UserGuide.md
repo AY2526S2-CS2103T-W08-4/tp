@@ -33,9 +33,10 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
 - [Known Issues](#known-issues)
 - [Command Summary](#command-summary)
 
-<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 <br>
 
 ## Quick Start
@@ -109,6 +110,7 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
       </tab>
    </tabs>
 
+
    An interface shown below should appear in a few seconds. The app comes preloaded with some sample data.<br><br>
    ![Ui](images/Ui.png =1000x) <br>
 
@@ -119,11 +121,11 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
 
 6. Refer to the [Features](#features) below for more commands to try.
 
-<div style="page-break-after: always;"></div>
+
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
-<br>
 
 ## Features
 
@@ -166,7 +168,8 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
   </box>
 
 ---
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Adding a Member : `add`
 
@@ -208,7 +211,8 @@ Displays the list of all registered gym members.
 **Format:** `list`
 
 ---
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Deleting Member(s) : `delete`
 
@@ -247,6 +251,8 @@ delete id/1000
 ---
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Editing a Member : `edit`
 
 Edits an existing gym member among the registered gym members.
@@ -284,11 +290,14 @@ edit 1000 p/91234567 e/johndoe@example.com
 ```
 
 **Expected output:**
-* Edited the `PHONE` and `EMAIL` of member with `MEMBERSHIP_ID` of `1000`, together with a `Edited member: ...` success message.<br><br>
+* Edited the `PHONE` and `EMAIL` of member with `MEMBERSHIP_ID` of `1000`, together with a `Edited member: ...` success message.
+<br><br>
 ![result for 'edit 1000 p/91234567 e/johndoe@example.com'](images/editResult.png)
 
 ---
 <br>
+<div style="page-break-after: always;"></div>
+
 
 ### Finding Member(s) : `find`
 
@@ -334,6 +343,8 @@ find n/bernice
 
 ---
 <br>
+
+<div style="page-break-after: always;"></div>
 
 ### Sorting Members : `sort`
 
@@ -410,6 +421,8 @@ renew id/1000 d/7
 ---
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Clearing All Data : `clear`
 
 Deletes all registered gym members after confirmation.
@@ -439,6 +452,8 @@ Deletes all registered gym members after confirmation.
 ---
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Getting Help : `help`
 
 Shows a help window containing the URL of the User Guide and a summary of executable commands.
@@ -462,7 +477,8 @@ Shows a help window containing the URL of the User Guide and a summary of execut
 ![result for 'help'](images/helpResult.png)
 
 ---
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Exiting the App : `exit`
 
