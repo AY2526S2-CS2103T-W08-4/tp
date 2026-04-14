@@ -33,9 +33,10 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
 - [Known Issues](#known-issues)
 - [Command Summary](#command-summary)
 
-<div style="page-break-after: always;"></div>
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
+
 <br>
 
 ## Quick Start
@@ -109,6 +110,8 @@ If you value **speed, accuracy, and efficiency** in your daily operations, GymCo
       </tab>
    </tabs>
 
+<div style="page-break-after: always;"></div>
+
    An interface shown below should appear in a few seconds. The app comes preloaded with some sample data.<br><br>
    ![Ui](images/Ui.png =1000x) <br>
 
@@ -119,11 +122,11 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
 
 6. Refer to the [Features](#features) below for more commands to try.
 
-<div style="page-break-after: always;"></div>
+
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
-<br>
 
 ## Features
 
@@ -166,7 +169,8 @@ e.g. typing `help` and pressing Enter will open the help window.<br>
   </box>
 
 ---
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Adding a Member : `add`
 
@@ -208,7 +212,8 @@ Displays the list of all registered gym members.
 **Format:** `list`
 
 ---
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Deleting Member(s) : `delete`
 
@@ -246,6 +251,8 @@ delete id/1000
   ![result for 'delete id/1000'](images/deleteResult.png)
 ---
 <br>
+
+<div style="page-break-after: always;"></div>
 
 ### Editing a Member : `edit`
 
@@ -335,6 +342,8 @@ find n/bernice
 ---
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Sorting Members : `sort`
 
 Sorts the list of registered gym members by the specified order.
@@ -410,6 +419,8 @@ renew id/1000 d/7
 ---
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Clearing All Data : `clear`
 
 Deletes all registered gym members after confirmation.
@@ -439,6 +450,8 @@ Deletes all registered gym members after confirmation.
 ---
 <br>
 
+<div style="page-break-after: always;"></div>
+
 ### Getting Help : `help`
 
 Shows a help window containing the URL of the User Guide and a summary of executable commands.
@@ -462,7 +475,8 @@ Shows a help window containing the URL of the User Guide and a summary of execut
 ![result for 'help'](images/helpResult.png)
 
 ---
-<br>
+<div style="page-break-after: always;"></div>
+
 
 ### Exiting the App : `exit`
 
