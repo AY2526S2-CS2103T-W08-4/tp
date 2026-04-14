@@ -40,7 +40,7 @@ public class AddCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New member added: %1$s";
     public static final String MESSAGE_DUPLICATE_PERSON = "This member already exists in the address book";
-    public static final String MESSAGE_ADDRESS_BOOK_FULL = "Cannot add more members."
+    public static final String MESSAGE_ADDRESS_BOOK_FULL = "Cannot add more members. "
             + "Address book has reached its maximum capacity of "
             + MembershipId.MAX_CAPACITY + " members (including both deleted and existing members).";
 
