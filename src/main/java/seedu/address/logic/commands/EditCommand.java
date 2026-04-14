@@ -37,13 +37,14 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the fields of the member identified "
             + "by membership ID.\n"
-            + "Existing values will be overwritten by the input values.\n"
             + "Parameters: MEMBERSHIP_ID "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_MEMBERSHIP_EXPIRY_DATE + "EXPIRY_DATE]\n"
+            + "Existing values will be overwritten by the input values "
+            + "(unless all values the same)\n"
             + "Example: " + COMMAND_WORD + " 1001 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
